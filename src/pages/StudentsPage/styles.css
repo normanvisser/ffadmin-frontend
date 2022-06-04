@@ -2,13 +2,40 @@
   margin: 40px 60px;
 }
 
+.search-field {
+  width: 30%;
+  border-radius: 10px;
+  border: 1px solid #c1c1c1;
+  outline: none;
+
+  background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
+
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 40px;
+
+  /* -webkit-appearance: none; */
+}
+
 .controls {
   display: flex;
   justify-content: space-between;
 }
 
+.filters-button {
+  display: flex;
+}
+
+.filter {
+  margin-right: 20px;
+}
+
 .filter-dropdown {
-  vertical-align: bottom;
+  vertical-align: -5px;
+}
+
+.add-student-button {
+  border-radius: 10px;
 }
 
 table {

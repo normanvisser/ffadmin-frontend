@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import StudentTableRow from "../../components/StudentTableRow/StudentTableRow";
 import { selectStudents } from "../../store/student/selectors";
 import { fetchStudents } from "../../store/student/thunks";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import "./styles.css";
 
@@ -21,23 +21,34 @@ export default function StudentsPage() {
   return (
     <div className="page">
       <div className="controls">
-        <input />
-        <p>
-          Group: All
-          <KeyboardArrowDownIcon fontSize="small" className="filter-dropdown" />
-        </p>
-        <p>
-          Status: All
-          <KeyboardArrowDownIcon fontSize="small" className="filter-dropdown" />
-        </p>
-        <Button
-          size="small"
-          variant="contained"
-          disableElevation
-          startIcon={<AddCircleOutlineIcon />}
-        >
-          Add Student
-        </Button>
+        <input className="search-field" autofocus="autofocus" />
+        <div className="filters-button">
+          <p className="filter">
+            Group: All
+            <ExpandMoreIcon
+              sx={{ color: "#99a0ab" }}
+              fontSize="small"
+              className="filter-dropdown"
+            />
+          </p>
+          <p className="filter">
+            Status: All
+            <ExpandMoreIcon
+              sx={{ color: "#99a0ab" }}
+              fontSize="small"
+              className="filter-dropdown"
+            />
+          </p>
+          <Button
+            className="add-student-button"
+            size="small"
+            variant="contained"
+            disableElevation
+            startIcon={<AddCircleOutlineIcon />}
+          >
+            Add Student
+          </Button>
+        </div>
       </div>
       <table>
         <thead>
