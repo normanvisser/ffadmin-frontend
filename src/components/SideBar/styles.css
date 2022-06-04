@@ -1,0 +1,9 @@
+.logo {
+  min-height: 64px;
+}
+
+.side-bar {
+  background-color: #fff;
+  height: 100vh;
+  width: 300px;
+}

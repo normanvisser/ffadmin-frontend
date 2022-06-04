@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  student: null,
+  students: [], // GET /students (only include group)
+  groups: [],
+  studentDetails: null, // GET /students/:id -> includes everything
+  groupDetails: null,
 };
 
 export const studentSlice = createSlice({
@@ -9,11 +12,14 @@ export const studentSlice = createSlice({
   initialState,
   reducers: {
     getStudents: (state, action) => {
-      state.student = action.payload;
+      state.students = action.payload;
+    },
+    getSpecificStudent: (state, action) => {
+      state.studentDetails = action.payload;
     },
   },
 });
 
-export const { getStudents } = studentSlice.actions;
+export const { getStudents, getSpecificStudent } = studentSlice.actions;
 
 export default studentSlice.reducer;
