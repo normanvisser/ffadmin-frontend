@@ -39,10 +39,8 @@ export default function StudentTableRow(props) {
   return (
     <tr>
       <td>{statusColor()}</td>
-      <td>
-        <b>
-          {props.firstName} {props.lastName}
-        </b>
+      <td className="font-weight-600">
+        {props.firstName} {props.affix} {props.lastName}
       </td>
       <td>{props.gender}</td>
       <td>{props.dateOfBirth}</td>

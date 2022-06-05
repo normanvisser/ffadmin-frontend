@@ -67,7 +67,7 @@ table tr:last-child td {
   /* padding-bottom: 35px; */
 }
 
-tr:hover {
+tr:not(:nth-child(0)):hover {
   background-color: coral;
 }
 

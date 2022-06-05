@@ -1,6 +1,6 @@
 import axios from "axios";
 import { api_url } from "../../config/constants";
-import { getSpecificStudent, getStudents } from "./slice";
+import { getGroupNames, getSpecificStudent, getStudents } from "./slice";
 
 export const fetchStudents = async (dispatch, getState) => {
   try {
@@ -23,3 +23,12 @@ export const fetchSpecificStudent =
       console.log(error.message);
     }
   };
+
+export const fetchGroupNames = async (dispatch, getState) => {
+  try {
+    const response = await axios.get(`${api_url}/groups/allNames`);
+    dispatch(getGroupNames(response.data));
+  } catch (e) {
+    console.log(e.message);
+  }
+};

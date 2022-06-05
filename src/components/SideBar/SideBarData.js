@@ -1,19 +1,19 @@
-import HomeIcon from "@mui/icons-material/Home";
+import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
 import GroupsIcon from "@mui/icons-material/Groups";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
+import EventAvailableRoundedIcon from "@mui/icons-material/EventAvailableRounded";
+import AccessibilityNewRoundedIcon from "@mui/icons-material/AccessibilityNewRounded";
 
 export const sideBarData = [
   {
     id: 1,
     title: "Dashboard",
-    icon: <HomeIcon />,
+    icon: <GridViewRoundedIcon />,
     link: "/",
   },
   {
     id: 2,
     title: "Students",
-    icon: <AccessibilityNewIcon />,
+    icon: <AccessibilityNewRoundedIcon />,
     link: "/students",
   },
   {
@@ -25,7 +25,7 @@ export const sideBarData = [
   {
     id: 4,
     title: "Attendance",
-    icon: <BorderColorIcon />,
+    icon: <EventAvailableRoundedIcon />,
     link: "/attendance",
   },
 ];
