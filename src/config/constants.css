@@ -5,8 +5,9 @@
 }
 
 .button {
-  width: 100px;
-  padding: 10px 0px;
+  min-width: 110px;
+  height: 37px;
+  padding: 10px 20px;
   font-weight: 600;
   border-radius: 6px;
 }

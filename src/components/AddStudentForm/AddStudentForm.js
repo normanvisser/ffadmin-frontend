@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createNewStudent } from "../../store/student/thunks";

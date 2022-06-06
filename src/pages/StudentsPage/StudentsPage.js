@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import StudentTableRow from "../../components/StudentTableRow/StudentTableRow";
@@ -87,16 +86,13 @@ export default function StudentsPage() {
               className="filter-dropdown"
             />
           </p>
-          <Button
-            className="add-student-button"
-            size="small"
-            variant="contained"
-            disableElevation
-            startIcon={<AddCircleOutlineIcon />}
+          <button
+            className="button button-primary"
             onClick={() => setOpenForm(true)}
           >
+            {/* <AddCircleOutlineIcon />  */}
             Add Student
-          </Button>
+          </button>
           <AddStudentForm
             open={openForm}
             close={() => {
@@ -137,8 +133,6 @@ export default function StudentsPage() {
               ))}
         </tbody>
       </table>
-      <button className="button-full">Test</button>
-      <button className="button-full">Add Student</button>
     </div>
   );
 }
