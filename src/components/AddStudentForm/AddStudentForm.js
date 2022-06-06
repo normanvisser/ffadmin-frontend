@@ -1,8 +1,11 @@
 import { Button } from "@mui/material";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createNewStudent } from "../../store/student/thunks";
 import "./styles.css";
 
-export default function AddStudentForm({ open, children }) {
+export default function AddStudentForm({ open, close }) {
+  const dispatch = useDispatch();
   const [firstName, setFirstName] = useState("");
   const [initials, setInitials] = useState("");
   const [lastName, setLastName] = useState("");
@@ -11,10 +14,29 @@ export default function AddStudentForm({ open, children }) {
   const [bsn, setBsn] = useState("");
   const [ref, setRef] = useState("");
   const [startingDate, setStartingDate] = useState("");
-  const [contractSigned, setContractSigned] = useState("");
+  const [contractSigned, setContractSigned] = useState(true);
   const [webCode, setWebCode] = useState("");
-  const [extension, setExtension] = useState("");
+  const [extension, setExtension] = useState(true);
   const [status, setStatus] = useState("");
+
+  const submitForm = () => {
+    dispatch(
+      createNewStudent(
+        firstName,
+        initials,
+        lastName,
+        gender,
+        dateOfBirth,
+        bsn,
+        ref,
+        startingDate,
+        contractSigned,
+        webCode,
+        extension,
+        status
+      )
+    );
+  };
 
   if (!open) return null;
   return (
@@ -59,7 +81,7 @@ export default function AddStudentForm({ open, children }) {
 
           <div className="display-flex-column">
             <label for="gender">Gender</label>
-            <select onChange={(e) => setDateOfBirth(e.target.value)}>
+            <select onChange={(e) => setGender(e.target.value)}>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
@@ -163,7 +185,7 @@ export default function AddStudentForm({ open, children }) {
           </div>
           <div className="display-flex-column">
             <label for="status">Status</label>
-            <select onChange={(e) => setContractSigned(e.target.value)}>
+            <select onChange={(e) => setStatus(e.target.value)}>
               <option value="Active">Active</option>
               <option value="On-Hold">On-Hold</option>
               <option value="Finished">Finished</option>
@@ -185,7 +207,7 @@ export default function AddStudentForm({ open, children }) {
             variant="contained"
             disableElevation
             // startIcon={<AddCircleOutlineIcon />}
-            // onClick={() => setOpenForm(true)}
+            onClick={submitForm}
           >
             Submit
           </Button>
@@ -194,8 +216,8 @@ export default function AddStudentForm({ open, children }) {
             size="medium"
             variant="outlined"
             disableElevation
+            onClick={close}
             // startIcon={<AddCircleOutlineIcon />}
-            // onClick={() => setOpenForm(true)}
           >
             Cancel
           </Button>

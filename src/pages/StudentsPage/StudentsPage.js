@@ -96,8 +96,12 @@ export default function StudentsPage() {
           >
             Add Student
           </Button>
-          {/* <AddStudentForm open={openForm}>Fancy Modal</AddStudentForm> */}
-          <AddStudentForm open={openForm} />
+          <AddStudentForm
+            open={openForm}
+            close={() => {
+              setOpenForm(false);
+            }}
+          />
         </div>
       </div>
       <table>

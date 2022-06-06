@@ -32,3 +32,40 @@ export const fetchGroupNames = async (dispatch, getState) => {
     console.log(e.message);
   }
 };
+
+export const createNewStudent =
+  (
+    firstName,
+    initials,
+    lastName,
+    gender,
+    dateOfBirth,
+    bsn,
+    ref,
+    startingDate,
+    contractSigned,
+    webCode,
+    extension,
+    status
+  ) =>
+  async (dispatch, getState) => {
+    try {
+      const response = await axios.post(`${api_url}/students/newStudent`, {
+        firstName,
+        initials,
+        lastName,
+        gender,
+        dateOfBirth,
+        bsn,
+        ref,
+        startingDate,
+        contractSigned,
+        webCode,
+        extension,
+        status,
+      });
+      console.log(response);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
