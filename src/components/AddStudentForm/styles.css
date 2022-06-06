@@ -52,9 +52,9 @@ input {
 
 .submit-cancel-buttons {
   display: flex;
-  padding: 10px 0px;
-}
+  float: right;
+  justify-content: space-between;
 
-.submit-button {
-  padding: 20px;
+  width: 45.4%;
+  padding: 40px 0px;
 }

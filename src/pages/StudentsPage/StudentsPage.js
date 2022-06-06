@@ -12,6 +12,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import "./styles.css";
 import FilterGroupName from "../../components/FilterGroupName/FilterGroupName";
 import AddStudentForm from "../../components/AddStudentForm/AddStudentForm";
+import "../../config/constants.css";
 
 export default function StudentsPage() {
   const dispatch = useDispatch();
@@ -136,6 +137,8 @@ export default function StudentsPage() {
               ))}
         </tbody>
       </table>
+      <button className="button-full">Test</button>
+      <button className="button-full">Add Student</button>
     </div>
   );
 }

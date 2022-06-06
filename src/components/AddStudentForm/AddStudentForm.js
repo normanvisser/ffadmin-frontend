@@ -201,26 +201,16 @@ export default function AddStudentForm({ open, close }) {
           </div>
         </div>
         <div className="submit-cancel-buttons">
-          <Button
-            className="submit-button"
-            size="medium"
-            variant="contained"
-            disableElevation
-            // startIcon={<AddCircleOutlineIcon />}
-            onClick={submitForm}
-          >
-            Submit
-          </Button>
-          <Button
-            className="cancel-button"
-            size="medium"
-            variant="outlined"
-            disableElevation
-            onClick={close}
-            // startIcon={<AddCircleOutlineIcon />}
-          >
+          <button className="button button-secondary" onClick={close}>
             Cancel
-          </Button>
+          </button>
+          <button className="button button-primary" onClick={submitForm}>
+            Submit
+          </button>
+
+          {/* // startIcon={<AddCircleOutlineIcon />} */}
+
+          {/* // startIcon={<AddCircleOutlineIcon />} */}
         </div>
       </form>
     </>
