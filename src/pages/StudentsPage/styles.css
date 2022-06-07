@@ -2,7 +2,13 @@
   margin: 40px 60px;
 }
 
+.controls {
+  display: flex;
+  justify-content: space-between;
+}
+
 .search-field {
+  float: left;
   width: 30%;
   border-radius: 10px;
   border: 1px solid #c1c1c1;
@@ -17,21 +23,35 @@
   /* -webkit-appearance: none; */
 }
 
-.controls {
+.filters-add-student {
+  width: 50%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
-.filters-button {
-  display: flex;
+.remove-filter-button {
+  margin-right: 8px;
+  color: #929292;
+  font-weight: 600;
+  border: none;
+  background-color: transparent;
+}
+
+.remove-filter-button:hover {
+  color: #c1c1c1;
+}
+
+.student-filter {
+  border: none;
+  min-width: 37px;
+}
+
+.student-filter:focus {
+  outline: none;
 }
 
 .filter {
   margin-right: 20px;
-}
-
-.filter-dropdown {
-  vertical-align: -5px;
 }
 
 table {

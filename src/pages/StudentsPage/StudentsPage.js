@@ -6,12 +6,14 @@ import {
   selectStudents,
 } from "../../store/student/selectors";
 import { fetchGroupNames, fetchStudents } from "../../store/student/thunks";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
+import SearchIcon from "@mui/icons-material/SearchRounded";
 import "./styles.css";
 import FilterGroupName from "../../components/FilterGroupName/FilterGroupName";
 import AddStudentForm from "../../components/AddStudentForm/AddStudentForm";
 import "../../config/constants.css";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function StudentsPage() {
   const dispatch = useDispatch();
@@ -27,18 +29,18 @@ export default function StudentsPage() {
 
   const renderStudents = students.filter(
     (student) =>
-      (student.groups.map((group) => group.name).includes(groupFilter) ||
-        groupFilter === "all") &&
-      (student.status === statusFilter || statusFilter === "all") &&
-      ((student.firstName + " " + student.lastName)
-        .toLowerCase()
-        .includes(searchInput) ||
-        student.dateOfBirth.includes(searchInput) ||
-        student.groups
-          .map((group) => group.name.toLowerCase())
+      student.groups.map((group) => group.name).includes(groupFilter) ||
+      (groupFilter === "all" &&
+        (student.status === statusFilter || statusFilter === "all") &&
+        ((student.firstName + " " + student.lastName)
+          .toLowerCase()
           .includes(searchInput) ||
-        student.ref.toLowerCase().includes(searchInput) ||
-        student.bsn.includes(searchInput))
+          student.dateOfBirth.includes(searchInput) ||
+          student.groups
+            .map((group) => group.name.toLowerCase())
+            .includes(searchInput) ||
+          student.ref.toLowerCase().includes(searchInput) ||
+          student.bsn.includes(searchInput)))
   );
 
   useEffect(() => {
@@ -51,40 +53,53 @@ export default function StudentsPage() {
       <div className="controls">
         <input
           className="search-field"
+          value={searchInput}
           onChange={(e) => setSearchInput(e.target.value.toLowerCase().trim())}
         />
-        <div className="filters-button">
-          <button type="button" onClick={() => setGroupFilter("all")}>
-            Remove Filters
-          </button>
+        <button
+          onClick={() => {
+            setSearchInput("");
+          }}
+        >
+          <ClearRoundedIcon />
+        </button>
+        <div className="filters-add-student">
+          {(groupFilter !== "all" || statusFilter !== "all") && (
+            <button
+              className="remove-filter-button"
+              type="button"
+              onClick={() => {
+                setGroupFilter("all");
+              }}
+            >
+              Remove Filters
+            </button>
+          )}
           <p className="filter">
-            <b className="font-weight-600">Group: All</b>
-            <select onChange={(e) => setGroupFilter(e.target.value)}>
+            Group:
+            <select
+              className="student-filter"
+              onChange={(e) => setGroupFilter(e.target.value)}
+            >
               <option value={"all"}>All</option>
               {groupNames.map((name) => (
                 <FilterGroupName key={name.id} name={name.name} />
               ))}
             </select>
-            <ExpandMoreIcon
-              sx={{ color: "#99a0ab" }}
-              fontSize="small"
-              className="filter-dropdown"
-            />
           </p>
-          <p className="filter" style={{ fontWeight: 600 }}>
-            Status: All
-            <select onChange={(e) => setStatusFilter(e.target.value)}>
+          <p className="filter">
+            Status:
+            <select
+              id="student-filter"
+              className="student-filter"
+              onChange={(e) => setStatusFilter(e.target.value)}
+            >
               <option value="all">All</option>
               <option value="Active">Active</option>
               <option value="On-Hold">On-Hold</option>
               <option value="Finished">Finished</option>
               <option value="Stopped">Stopped</option>
             </select>
-            <ExpandMoreIcon
-              sx={{ color: "#99a0ab" }}
-              fontSize="small"
-              className="filter-dropdown"
-            />
           </p>
           <button
             className="button button-primary"
@@ -133,6 +148,24 @@ export default function StudentsPage() {
               ))}
         </tbody>
       </table>
+      <TextField
+        InputProps={{
+          startAdornment: (
+            <InputAdornment>
+              <IconButton>
+                <SearchIcon />
+              </IconButton>
+            </InputAdornment>
+          ),
+          endAdornment: (
+            <InputAdornment>
+              <IconButton>
+                <ClearRoundedIcon />
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
     </div>
   );
 }

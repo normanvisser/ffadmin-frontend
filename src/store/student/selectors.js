@@ -9,3 +9,11 @@ export const selectSpecificStudent = (reduxState) => {
 export const selectGroupNames = (reduxState) => {
   return reduxState.student.groups;
 };
+
+export const selectGroups = (reduxState) => {
+  return reduxState.student.groups;
+};
+
+export const selectGroupDetails = (reduxState) => {
+  return reduxState.student.groupDetails;
+};

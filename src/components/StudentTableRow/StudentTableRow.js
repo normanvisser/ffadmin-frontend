@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import "./styles.css";
 
 export default function StudentTableRow(props) {
+  const navigate = useNavigate();
   const statusColor = () => {
     if (props.status === "Active") {
       return (
@@ -37,7 +38,10 @@ export default function StudentTableRow(props) {
   };
 
   return (
-    <tr>
+    <tr
+      className="student-row"
+      onClick={() => navigate(`/students/${props.id}`)}
+    >
       <td>{statusColor()}</td>
       <td className="font-weight-600">
         {props.firstName} {props.affix} {props.lastName}
@@ -47,11 +51,6 @@ export default function StudentTableRow(props) {
       <td>{props.group}</td>
       <td>{props.refNr}</td>
       <td>{props.bsn}</td>
-      {/* <Link to={`/students/${props.id}`}>
-        <td>
-          <i>Details >></i>
-        </td>
-      </Link> */}
     </tr>
   );
 }

@@ -5,3 +5,6 @@
 .font-weight-600 {
   font-weight: 600;
 }
+.student-row {
+  cursor: pointer;
+}

@@ -1,0 +1,47 @@
+.top-bar {
+  height: 60px;
+  border-bottom: 1px solid #c1c1c1;
+}
+
+.student-image {
+  width: 30%;
+  height: 30%;
+  border-radius: 300px;
+}
+
+.page {
+  /* margin: 5% 0 0 5%; */
+  /* width: 600px; */
+}
+
+.width-49 {
+  width: 49%;
+}
+
+.image-personal-details {
+  margin: 10% 0 5% 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.status-display {
+  font-weight: 600;
+  background-color: #ffb7b7;
+  /* padding: 5px 10px; */
+  border-radius: 3px;
+  color: #c62828;
+}
+
+.school-details {
+  margin: 5% 0 5% 10%;
+}
+
+.ref-and-contract {
+  display: flex;
+  justify-content: space-between;
+}
+
+.web-and-extension {
+  display: flex;
+  justify-content: space-between;
+}

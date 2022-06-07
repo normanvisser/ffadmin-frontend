@@ -12,3 +12,7 @@
 .font-weight-600 {
   font-weight: 600;
 }
+
+.logout-icon {
+  transform: rotate(180deg);
+}

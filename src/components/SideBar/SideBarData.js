@@ -2,6 +2,8 @@ import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
 import GroupsIcon from "@mui/icons-material/Groups";
 import EventAvailableRoundedIcon from "@mui/icons-material/EventAvailableRounded";
 import AccessibilityNewRoundedIcon from "@mui/icons-material/AccessibilityNewRounded";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
+import "./styles.css";
 
 export const sideBarData = [
   {
@@ -27,5 +29,11 @@ export const sideBarData = [
     title: "Attendance",
     icon: <EventAvailableRoundedIcon />,
     link: "/attendance",
+  },
+  {
+    id: 5,
+    title: "Log Out",
+    icon: <LogoutRoundedIcon className="logout-icon" />,
+    link: "/logout",
   },
 ];

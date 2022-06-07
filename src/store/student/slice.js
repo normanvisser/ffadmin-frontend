@@ -20,10 +20,21 @@ export const studentSlice = createSlice({
     getGroupNames: (state, action) => {
       state.groups = action.payload;
     },
+    getGroups: (state, action) => {
+      state.groups = action.payload;
+    },
+    getGroupDetails: (state, action) => {
+      state.groupDetails = action.payload;
+    },
   },
 });
 
-export const { getStudents, getSpecificStudent, getGroupNames } =
-  studentSlice.actions;
+export const {
+  getStudents,
+  getSpecificStudent,
+  getGroupNames,
+  getGroups,
+  getGroupDetails,
+} = studentSlice.actions;
 
 export default studentSlice.reducer;
