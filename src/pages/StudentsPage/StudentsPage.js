@@ -13,7 +13,8 @@ import FilterGroupName from "../../components/FilterGroupName/FilterGroupName";
 import AddStudentForm from "../../components/AddStudentForm/AddStudentForm";
 import "../../config/constants.css";
 import { IconButton, InputAdornment, TextField } from "@mui/material";
-import { Link } from "react-router-dom";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
 export default function StudentsPage() {
   const dispatch = useDispatch();
@@ -27,21 +28,30 @@ export default function StudentsPage() {
 
   const groupNames = useSelector(selectGroupNames);
 
-  const renderStudents = students.filter(
-    (student) =>
-      student.groups.map((group) => group.name).includes(groupFilter) ||
-      (groupFilter === "all" &&
-        (student.status === statusFilter || statusFilter === "all") &&
-        ((student.firstName + " " + student.lastName)
-          .toLowerCase()
-          .includes(searchInput) ||
-          student.dateOfBirth.includes(searchInput) ||
-          student.groups
-            .map((group) => group.name.toLowerCase())
+  const [sortBy, setSortBy] = useState("firstName");
+  const [sortDirection, setSortDirection] = useState("ascending");
+
+  const renderStudents = students
+    .filter(
+      (student) =>
+        student.groups.map((group) => group.name).includes(groupFilter) ||
+        (groupFilter === "all" &&
+          (student.status === statusFilter || statusFilter === "all") &&
+          ((student.firstName + " " + student.lastName)
+            .toLowerCase()
             .includes(searchInput) ||
-          student.ref.toLowerCase().includes(searchInput) ||
-          student.bsn.includes(searchInput)))
-  );
+            student.dateOfBirth.includes(searchInput) ||
+            student.groups
+              .map((group) => group.name.toLowerCase())
+              .includes(searchInput) ||
+            student.ref.toLowerCase().includes(searchInput) ||
+            student.bsn.includes(searchInput)))
+    )
+    .sort(
+      sortDirection === "ascending"
+        ? (a, b) => a[`${sortBy}`].localeCompare(b[`${sortBy}`])
+        : (b, a) => a[`${sortBy}`].localeCompare(b[`${sortBy}`])
+    );
 
   useEffect(() => {
     dispatch(fetchStudents);
@@ -51,33 +61,55 @@ export default function StudentsPage() {
   return (
     <div className="page">
       <div className="controls">
-        <input
-          className="search-field"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value.toLowerCase().trim())}
-        />
-        <button
-          onClick={() => {
-            setSearchInput("");
-          }}
-        >
-          <ClearRoundedIcon />
-        </button>
+        <div className="students-search-input-and-button">
+          <input
+            className="search-field"
+            value={searchInput}
+            onChange={(e) =>
+              setSearchInput(e.target.value.toLowerCase().trim())
+            }
+            placeholder="Search"
+          />
+          {searchInput && (
+            <button
+              className="students-page-search-clear-button"
+              onClick={() => {
+                setSearchInput("");
+              }}
+            >
+              <ClearRoundedIcon sx={{ color: "#bdbdbd" }} />
+            </button>
+          )}
+        </div>
         <div className="filters-add-student">
+          <p className="filter">
+            Sort:
+            <select
+              onChange={(e) => setSortBy(e.target.value)}
+              className="student-filter"
+            >
+              <option value="firstName">First Name</option>
+              <option value="lastName">Last Name</option>
+              <option value="dateOfBirth">Date of Birth</option>
+              {/* <option value="groups][name">Group</option> */}
+            </select>
+          </p>
           {(groupFilter !== "all" || statusFilter !== "all") && (
             <button
               className="remove-filter-button"
               type="button"
               onClick={() => {
                 setGroupFilter("all");
+                setStatusFilter("all");
               }}
             >
-              Remove Filters
+              <ClearRoundedIcon sx={{ color: "#bdbdbd" }} />
             </button>
           )}
           <p className="filter">
             Group:
             <select
+              value={groupFilter}
               className="student-filter"
               onChange={(e) => setGroupFilter(e.target.value)}
             >
@@ -91,6 +123,7 @@ export default function StudentsPage() {
             Status:
             <select
               id="student-filter"
+              value={statusFilter}
               className="student-filter"
               onChange={(e) => setStatusFilter(e.target.value)}
             >
@@ -102,7 +135,7 @@ export default function StudentsPage() {
             </select>
           </p>
           <button
-            className="button button-primary"
+            className="button button-primary students-page-add-student-button"
             onClick={() => setOpenForm(true)}
           >
             {/* <AddCircleOutlineIcon />  */}
@@ -119,8 +152,10 @@ export default function StudentsPage() {
       <table>
         <thead>
           <tr>
-            <th style={{ width: "8%" }}>Status</th>
-            <th>Name</th>
+            <th style={{ width: "10%" }}>Status</th>
+            <div className="students-page-table-column-name">
+              <th>Name</th>
+            </div>
             <th style={{ width: "13%" }}>Gender</th>
             <th style={{ width: "15%" }}>Date of Birth</th>
             <th style={{ width: "12%" }}>Group</th>
@@ -148,24 +183,6 @@ export default function StudentsPage() {
               ))}
         </tbody>
       </table>
-      <TextField
-        InputProps={{
-          startAdornment: (
-            <InputAdornment>
-              <IconButton>
-                <SearchIcon />
-              </IconButton>
-            </InputAdornment>
-          ),
-          endAdornment: (
-            <InputAdornment>
-              <IconButton>
-                <ClearRoundedIcon />
-              </IconButton>
-            </InputAdornment>
-          ),
-        }}
-      />
     </div>
   );
 }

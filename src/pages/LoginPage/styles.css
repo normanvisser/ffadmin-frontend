@@ -1,5 +1,5 @@
 .login-div {
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
 }
 
@@ -7,9 +7,32 @@
   display: flex;
   flex-direction: column;
   padding: 30px;
-  border: 1px solid var(--red);
+  border: 1px solid var(--light-grey);
   border-radius: 5px;
   margin: auto;
-  max-width: 40%;
-  vertical-align: center;
+  width: 30%;
+}
+
+.input-field-login-page {
+  padding: var(--padding-input-field);
+}
+
+.login-page-logo {
+  padding-bottom: 20px;
+}
+
+.login-page-button {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 3px;
+  width: 80px;
+  padding: 9px 20px;
+  margin-top: 16px;
+  color: #fff;
+  font-weight: 700;
+  margin-left: auto;
+}
+
+.login-page-button:hover {
+  background-color: var(--hover-color);
 }

@@ -7,7 +7,7 @@ const LogoutPage = () => {
   useEffect(() => {
     dispatch(logoutUser);
   }, [dispatch]);
-  return <p>Logged out</p>;
+  return <div></div>;
 };
 
 export default LogoutPage;

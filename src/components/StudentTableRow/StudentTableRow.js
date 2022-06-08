@@ -7,35 +7,60 @@ export default function StudentTableRow(props) {
   const statusColor = () => {
     if (props.status === "Active") {
       return (
-        <FiberManualRecordIcon
-          className="status-color"
-          sx={{ color: "#4acd92", fontSize: 15 }}
-        />
+        <p className="students-page-current-status color-status-active">
+          Active
+        </p>
       );
     } else if (props.status === "On-Hold") {
       return (
-        <FiberManualRecordIcon
-          className="status-color"
-          sx={{ color: "#ffb554", fontSize: 15 }}
-        />
+        <p className="students-page-current-status color-status-onhold">
+          On-Hold
+        </p>
       );
     } else if (props.status === "Stopped") {
       return (
-        <FiberManualRecordIcon
-          // fontSize="small"
-          className="status-color"
-          sx={{ color: "#ff6865", fontSize: 15 }}
-        />
+        <p className="students-page-current-status color-status-stopped">
+          Stopped
+        </p>
       );
     } else if (props.status === "Finished") {
       return (
-        <FiberManualRecordIcon
-          className="status-color"
-          sx={{ color: "#e3e3e3", fontSize: 15 }}
-        />
+        <p className="students-page-current-status color-status-done">Done</p>
       );
     }
   };
+  // const statusColor = () => {
+  //   if (props.status === "Active") {
+  //     return (
+  //       <FiberManualRecordIcon
+  //         className="status-color"
+  //         sx={{ color: "#4acd92", fontSize: 15 }}
+  //       />
+  //     );
+  //   } else if (props.status === "On-Hold") {
+  //     return (
+  //       <FiberManualRecordIcon
+  //         className="status-color"
+  //         sx={{ color: "#ffb554", fontSize: 15 }}
+  //       />
+  //     );
+  //   } else if (props.status === "Stopped") {
+  //     return (
+  //       <FiberManualRecordIcon
+  //         // fontSize="small"
+  //         className="status-color"
+  //         sx={{ color: "#ff6865", fontSize: 15 }}
+  //       />
+  //     );
+  //   } else if (props.status === "Finished") {
+  //     return (
+  //       <FiberManualRecordIcon
+  //         className="status-color"
+  //         sx={{ color: "#e3e3e3", fontSize: 15 }}
+  //       />
+  //     );
+  //   }
+  // };
 
   return (
     <tr

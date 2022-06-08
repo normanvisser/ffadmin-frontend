@@ -30,10 +30,10 @@ export const sideBarData = [
     icon: <EventAvailableRoundedIcon />,
     link: "/attendance",
   },
-  {
-    id: 5,
-    title: "Log Out",
-    icon: <LogoutRoundedIcon className="logout-icon" />,
-    link: "/logout",
-  },
+  // {
+  //   id: 5,
+  //   title: "Log Out",
+  //   icon: <LogoutRoundedIcon className="logout-icon" />,
+  //   link: "/logout",
+  // },
 ];

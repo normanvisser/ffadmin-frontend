@@ -1,16 +1,28 @@
-.logo {
-  min-height: 64px;
-}
-
 .side-bar {
-  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: var(--background-blue);
   height: 100vh;
   width: 220px;
-  border-right: 1px solid #e3e3e3;
+  border-right: 2px solid var(--color-grey-3);
+  /* box-shadow: 2px 0px 10px #c4c4c4a8; */
+}
+
+.logout-button {
+  /* justify-content: flex-end; */
+  margin-top: auto;
 }
 
 .font-weight-600 {
   font-weight: 600;
+}
+
+.sidebar-logo {
+  padding: 18px 0;
+  display: block;
+  width: 120px;
+  margin: 0 auto;
 }
 
 .logout-icon {

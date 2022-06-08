@@ -41,12 +41,12 @@ export default function ClassesPage() {
                   name={group.name}
                   level={group.level}
                   teacher={group.user_groups_roles
-                    .filter((role) => role.role === "co-teacher")
+                    .filter((role) => role.role === "teacher")
                     .map(
                       (role) => role.user.firstName + " " + role.user.lastName
                     )}
                   coTeacher={group.user_groups_roles
-                    .filter((role) => role.role === "teacher")
+                    .filter((role) => role.role === "co-teacher")
                     .map(
                       (role) => role.user.firstName + " " + role.user.lastName
                     )}

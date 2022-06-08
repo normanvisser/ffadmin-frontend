@@ -7,10 +7,14 @@
   justify-content: space-between;
 }
 
+.students-search-input-and-button {
+  margin: auto 0;
+  display: flex;
+  position: relative;
+}
+
 .search-field {
-  float: left;
-  width: 30%;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid #c1c1c1;
   outline: none;
 
@@ -18,13 +22,27 @@
 
   background-repeat: no-repeat;
   background-position: left center;
-  padding-left: 40px;
+
+  padding: 10px 0px 10px 40px;
 
   /* -webkit-appearance: none; */
 }
 
+.students-page-search-clear-button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  margin: auto 0;
+  top: 21%;
+  right: 0;
+  cursor: pointer;
+}
+
+.students-page-sort-selector {
+  border: none;
+}
+
 .filters-add-student {
-  width: 50%;
   display: flex;
   justify-content: flex-end;
 }
@@ -35,23 +53,32 @@
   font-weight: 600;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .remove-filter-button:hover {
   color: #c1c1c1;
 }
 
+.filter {
+  margin-right: 20px;
+  color: var(--font-grey);
+  font-weight: 600;
+}
+
 .student-filter {
   border: none;
   min-width: 37px;
+  color: var(--secondary-color-dark);
+  font-weight: 600;
 }
 
 .student-filter:focus {
   outline: none;
 }
 
-.filter {
-  margin-right: 20px;
+.students-page-add-student-button {
+  margin: auto 0;
 }
 
 table {
@@ -84,7 +111,7 @@ table tr:last-child td {
 }
 
 tr:not(:nth-child(0)):hover {
-  background-color: coral;
+  background-color: var(--background-blue);
 }
 
 /* table tr:nth-child(odd) td {
