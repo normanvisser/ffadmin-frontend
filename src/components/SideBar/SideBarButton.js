@@ -12,7 +12,10 @@ export default function SideBarButton(props) {
       <List>
         <ListItem disablePadding>
           <ListItemButton component="a" href={props.link}>
-            <ListItemIcon style={{ minWidth: "40px" }}>
+            <ListItemIcon
+              sx={{ minWidth: "40px", color: "var(--bg-color)" }}
+              className="side-bar-button"
+            >
               {props.icon}
             </ListItemIcon>
             <ListItemText primary={props.title} />

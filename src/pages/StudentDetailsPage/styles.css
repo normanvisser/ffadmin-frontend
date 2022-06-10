@@ -1,47 +1,132 @@
 .top-bar {
-  height: 60px;
-  border-bottom: 1px solid #c1c1c1;
+  display: flex;
+  height: 20px;
+}
+
+.student-details_back-button {
+  /* display: flex; */
+  border: 1px solid #000;
+  border-radius: 30px;
+  background-color: transparent;
+  /* padding: 2px 5px; */
+}
+
+.personal-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .student-image {
-  width: 30%;
+  width: 20%;
   height: 30%;
   border-radius: 300px;
+  margin: auto 50px auto 0;
+}
+
+.student-details_personal-details {
+  display: flex;
+  line-height: 8px;
+}
+.student-details_personal-details-description {
+  padding-right: 50px;
+  font-weight: 600;
+}
+
+.name-and-status {
+  display: flex;
+  flex-direction: row;
+}
+
+.name-status-edit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.student-details_edit-button {
+  margin: auto 0;
 }
 
 .page {
   /* margin: 5% 0 0 5%; */
   /* width: 600px; */
 }
-
+/* 
 .width-49 {
   width: 49%;
-}
+} */
 
 .image-personal-details {
-  margin: 10% 0 5% 10%;
+  margin: 20px 20px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .status-display {
   font-weight: 600;
-  background-color: #ffb7b7;
-  /* padding: 5px 10px; */
+  background-color: transparent;
   border-radius: 3px;
-  color: #c62828;
+  margin: auto 0 auto 30px;
+  border-radius: 30px;
+  padding: 3px 10px;
+  border: 1px solid;
 }
 
-.school-details {
-  margin: 5% 0 5% 10%;
+.status-display.Active {
+  color: var(--color-status-green);
+  border-color: var(--color-status-green);
 }
 
-.ref-and-contract {
+.status-display.On-Hold {
+  color: var(--color-status-orange);
+  border-color: var(--color-status-orange);
+}
+
+.status-display.Stopped {
+  color: var(--color-status-red);
+  border-color: var(--color-status-red);
+}
+
+.status-display.Completed {
+  color: var(--color-status-grey);
+  border-color: var(--color-status-grey);
+}
+
+.title-and-attendance-details {
   display: flex;
+  flex-direction: column;
+}
+
+.attendance-details {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
-.web-and-extension {
+.attendance {
+  padding: 10px 40px 25px 40px;
+  width: 12%;
+  border: 2px solid var(--color-grey-4);
+  border-radius: 5px;
+}
+
+.total-attendance {
   display: flex;
-  justify-content: space-between;
+}
+
+.total-attendance-number {
+  font-size: 25px;
+  margin: auto 15px auto 0;
+  font-weight: 500;
+}
+
+.student-details_student-school-information {
+  display: flex;
+  flex-direction: row;
+}
+
+.student-details_student-school-info-description {
+  font-weight: 600;
+  padding-right: 40px;
 }

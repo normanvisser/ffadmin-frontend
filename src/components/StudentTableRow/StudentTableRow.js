@@ -23,9 +23,11 @@ export default function StudentTableRow(props) {
           Stopped
         </p>
       );
-    } else if (props.status === "Finished") {
+    } else if (props.status === "Completed") {
       return (
-        <p className="students-page-current-status color-status-done">Done</p>
+        <p className="students-page-current-status color-status-done">
+          Completed
+        </p>
       );
     }
   };
@@ -67,8 +69,9 @@ export default function StudentTableRow(props) {
       className="student-row"
       onClick={() => navigate(`/students/${props.id}`)}
     >
+      <td></td>
       <td>{statusColor()}</td>
-      <td className="font-weight-600">
+      <td>
         {props.firstName} {props.affix} {props.lastName}
       </td>
       <td>{props.gender}</td>
@@ -76,6 +79,7 @@ export default function StudentTableRow(props) {
       <td>{props.group}</td>
       <td>{props.refNr}</td>
       <td>{props.bsn}</td>
+      <td></td>
     </tr>
   );
 }

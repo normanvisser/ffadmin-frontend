@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-color);
 }
 
 code {
@@ -13,7 +14,13 @@ code {
 }
 
 html {
-  --primary-color: #3761eb;
+  --primary-color: rgb(0, 170, 255);
+  --primary-hover-color: rgb(43, 184, 255);
+  --secondary-color: rgb(61, 0, 33);
+  --bg-color: rgb(247, 244, 250);
+  --bg-color-hover: rgb(246, 238, 255);
+
+  /* --primary-color: #3761eb; */
   --secondary-color-dark: #2c479e;
 
   --font-grey: #848b95;
@@ -21,9 +28,9 @@ html {
   --font-grey-dark: #5c6a7c;
 
   --color-status-green: #4acd92;
-  --color-status-orange: #ffb554;
-  --color-status-red: #ff6865;
-  --color-status-grey: #e3e3e3;
+  --color-status-orange: #f29d2d;
+  --color-status-red: #ee3f3f;
+  --color-status-grey: #bdbdbd;
 
   --color-grey-1: #fafafa;
   --color-grey-2: #f5f5f5;

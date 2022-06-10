@@ -1,27 +1,27 @@
 .side-bar {
+  position: fixed;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  background-color: var(--background-blue);
+  background-color: var(--secondary-color);
   height: 100vh;
   width: 220px;
-  border-right: 2px solid var(--color-grey-3);
-  /* box-shadow: 2px 0px 10px #c4c4c4a8; */
+  /* border-right: 2px solid var(--color-grey-3); */
+  color: var(--bg-color);
 }
 
 .logout-button {
-  /* justify-content: flex-end; */
   margin-top: auto;
 }
 
-.font-weight-600 {
-  font-weight: 600;
+.css-1qfyxs7-MuiTypography-root {
+  font-weight: 600 !important;
 }
 
 .sidebar-logo {
-  padding: 18px 0;
+  padding: 37px 0 20px 0;
   display: block;
-  width: 120px;
+  width: 200px;
   margin: 0 auto;
 }
 

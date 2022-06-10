@@ -1,10 +1,13 @@
 .page {
-  margin: 40px 60px;
+  /* margin: 40px 60px; */
+  margin: 40px 30px 40px 250px;
 }
 
 .controls {
   display: flex;
   justify-content: space-between;
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 .students-search-input-and-button {
@@ -15,17 +18,27 @@
 
 .search-field {
   border-radius: 8px;
+  background-color: transparent;
   border: 1px solid #c1c1c1;
   outline: none;
 
-  background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
+  /* background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png); */
 
-  background-repeat: no-repeat;
-  background-position: left center;
+  /* background-repeat: no-repeat; */
+  /* background-position: left center; */
 
-  padding: 10px 0px 10px 40px;
+  padding: 10px 30px 10px 40px;
 
   /* -webkit-appearance: none; */
+}
+
+.students-page-search-input-icon {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  margin: auto 0;
+  top: 21%;
+  left: 5%;
 }
 
 .students-page-search-clear-button {
@@ -49,28 +62,31 @@
 
 .remove-filter-button {
   margin-right: 8px;
-  color: #929292;
-  font-weight: 600;
+  color: var(--primary-color);
+  font-weight: 700;
   border: none;
   background-color: transparent;
   cursor: pointer;
+  font-size: 12px;
 }
 
 .remove-filter-button:hover {
-  color: #c1c1c1;
+  color: var(--primary-hover-color);
 }
 
 .filter {
   margin-right: 20px;
-  color: var(--font-grey);
-  font-weight: 600;
+  color: var(--color-grey-6);
+  font-weight: 700;
+  font-size: 12px;
 }
 
 .student-filter {
   border: none;
   min-width: 37px;
-  color: var(--secondary-color-dark);
-  font-weight: 600;
+  color: var(--secondary-color);
+  font-weight: 700;
+  background-color: transparent;
 }
 
 .student-filter:focus {
@@ -86,7 +102,7 @@ table {
   border-collapse: collapse;
   width: 100%;
   margin: 2% auto;
-  background-color: #fff;
+  background-color: transparent;
 }
 
 td:last-child {
@@ -95,7 +111,7 @@ td:last-child {
 
 table th {
   text-align: left;
-  color: #99a0ab;
+  color: var(--color-grey-6);
   padding: 20px 0px;
   font-size: 12px;
 }
@@ -105,14 +121,44 @@ table td {
   padding: 15px 0px;
 }
 
+/* table tr:hover {
+  background-color: var(--bg-color-hover);
+  padding: 15px 0px;
+  border-radius: 30px;
+} */
+
+table tbody tr:hover {
+  background-color: var(--bg-color-hover);
+}
+
+table tr td:first-child {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom: none;
+}
+table tr td:last-child {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-bottom: none;
+}
+
+table tr:hover td:first-child {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+table tr:hover td:last-child {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
 table tr:last-child td {
   border-bottom: 0;
   /* padding-bottom: 35px; */
 }
 
-tr:not(:nth-child(0)):hover {
-  background-color: var(--background-blue);
-}
+/* tr:not(:nth-child(1)):hover {
+  background-color: transparent;
+} */
 
 /* table tr:nth-child(odd) td {
   background-color: #e7edf0;

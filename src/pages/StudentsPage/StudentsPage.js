@@ -12,6 +12,12 @@ import "./styles.css";
 import FilterGroupName from "../../components/FilterGroupName/FilterGroupName";
 import AddStudentForm from "../../components/AddStudentForm/AddStudentForm";
 import "../../config/constants.css";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import {
+  filterByGroup,
+  filterBySearch,
+  filterByStatus,
+} from "../../utils/filters";
 import { IconButton, InputAdornment, TextField } from "@mui/material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
@@ -34,18 +40,9 @@ export default function StudentsPage() {
   const renderStudents = students
     .filter(
       (student) =>
-        student.groups.map((group) => group.name).includes(groupFilter) ||
-        (groupFilter === "all" &&
-          (student.status === statusFilter || statusFilter === "all") &&
-          ((student.firstName + " " + student.lastName)
-            .toLowerCase()
-            .includes(searchInput) ||
-            student.dateOfBirth.includes(searchInput) ||
-            student.groups
-              .map((group) => group.name.toLowerCase())
-              .includes(searchInput) ||
-            student.ref.toLowerCase().includes(searchInput) ||
-            student.bsn.includes(searchInput)))
+        filterByGroup(student, groupFilter) &&
+        filterByStatus(student, statusFilter) &&
+        filterBySearch(student, searchInput)
     )
     .sort(
       sortDirection === "ascending"
@@ -62,12 +59,15 @@ export default function StudentsPage() {
     <div className="page">
       <div className="controls">
         <div className="students-search-input-and-button">
+          <SearchRoundedIcon
+            sx={{ color: "#bdbdbd", fontSize: 22 }}
+            className="students-page-search-input-icon"
+          />
+
           <input
             className="search-field"
             value={searchInput}
-            onChange={(e) =>
-              setSearchInput(e.target.value.toLowerCase().trim())
-            }
+            onChange={(e) => setSearchInput(e.target.value.toLowerCase())}
             placeholder="Search"
           />
           {searchInput && (
@@ -82,18 +82,6 @@ export default function StudentsPage() {
           )}
         </div>
         <div className="filters-add-student">
-          <p className="filter">
-            Sort:
-            <select
-              onChange={(e) => setSortBy(e.target.value)}
-              className="student-filter"
-            >
-              <option value="firstName">First Name</option>
-              <option value="lastName">Last Name</option>
-              <option value="dateOfBirth">Date of Birth</option>
-              {/* <option value="groups][name">Group</option> */}
-            </select>
-          </p>
           {(groupFilter !== "all" || statusFilter !== "all") && (
             <button
               className="remove-filter-button"
@@ -103,7 +91,8 @@ export default function StudentsPage() {
                 setStatusFilter("all");
               }}
             >
-              <ClearRoundedIcon sx={{ color: "#bdbdbd" }} />
+              <p>Clear filters</p>
+              {/* <ClearRoundedIcon sx={{ color: "#bdbdbd" }} /> */}
             </button>
           )}
           <p className="filter">
@@ -130,8 +119,20 @@ export default function StudentsPage() {
               <option value="all">All</option>
               <option value="Active">Active</option>
               <option value="On-Hold">On-Hold</option>
-              <option value="Finished">Finished</option>
+              <option value="Finished">Completed</option>
               <option value="Stopped">Stopped</option>
+            </select>
+          </p>
+          <p className="filter">
+            Sort:
+            <select
+              onChange={(e) => setSortBy(e.target.value)}
+              className="student-filter"
+            >
+              <option value="firstName">First Name</option>
+              <option value="lastName">Last Name</option>
+              <option value="dateOfBirth">Date of Birth</option>
+              {/* <option value="groups][name">Group</option> */}
             </select>
           </p>
           <button
@@ -152,7 +153,8 @@ export default function StudentsPage() {
       <table>
         <thead>
           <tr>
-            <th style={{ width: "10%" }}>Status</th>
+            <th style={{ width: "4%" }}></th>
+            <th style={{ width: "14%" }}>Status</th>
             <div className="students-page-table-column-name">
               <th>Name</th>
             </div>
@@ -161,6 +163,7 @@ export default function StudentsPage() {
             <th style={{ width: "12%" }}>Group</th>
             <th style={{ width: "15%" }}>Ref nr</th>
             <th style={{ width: "6%" }}>BSN</th>
+            <th style={{ width: "4%" }}></th>
           </tr>
         </thead>
         <tbody>

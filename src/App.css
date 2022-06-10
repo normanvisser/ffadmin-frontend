@@ -8,6 +8,15 @@ body {
   font-family: "Quicksand", sans-serif;
   /* font-family: "Roboto", sans-serif; */
   font-size: 14px;
+  /* color: rgb(61, 0, 33);
+  background-color: rgb(247, 244, 250); */
+}
+
+input,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
 }
 
 /* .App-logo {

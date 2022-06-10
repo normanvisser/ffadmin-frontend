@@ -3,7 +3,7 @@ import { sideBarData } from "./SideBarData";
 import SideBarButton from "./SideBarButton";
 import { useLocation } from "react-router-dom";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
-import logoFc from "./fc-logo-blue-transparent.png";
+import logoFc from "./fc-logo.jpg";
 
 export default function SideBar() {
   const location = useLocation().pathname;
