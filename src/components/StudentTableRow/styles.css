@@ -10,7 +10,7 @@
 }
 
 .students-page-current-status {
-  border-radius: 30px;
+  border-radius: 5px;
   display: flex;
   margin: 0px 55px 0px 0px;
   padding: 3px 0;
@@ -20,19 +20,23 @@
 }
 
 .color-status-active {
-  border: 1px solid var(--color-status-green);
+  /* border: 1px solid var(--color-status-green); */
   color: var(--color-status-green);
+  background-color: var(--color-status-green-bg);
 }
 
 .color-status-onhold {
-  border: 1px solid var(--color-status-orange);
+  /* border: 1px solid var(--color-status-orange); */
   color: var(--color-status-orange);
+  background-color: var(--color-status-orange-bg);
 }
 .color-status-stopped {
-  border: 1px solid var(--color-status-red);
+  /* border: 1px solid var(--color-status-red); */
   color: var(--color-status-red);
+  background-color: var(--color-status-red-bg);
 }
 .color-status-done {
-  border: 1px solid var(--color-status-grey);
-  color: var(--color-grey-5);
+  /* border: 1px solid var(--color-status-grey); */
+  color: var(--color-status-grey);
+  background-color: var(--color-status-grey-bg);
 }

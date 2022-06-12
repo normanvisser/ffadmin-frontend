@@ -28,3 +28,7 @@
 .logout-icon {
   transform: rotate(180deg);
 }
+
+.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root:hover {
+  background-color: #460026 !important;
+}

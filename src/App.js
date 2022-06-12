@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { bootstrapLoginState } from "./store/user/thunks";
 import LogoutPage from "./pages/LogoutPage/LogoutPage";
 import { selectToken, selectLoginAttempt } from "./store/user/selectors";
+import AttendancePage from "./pages/AttendancePage/AttendancePage";
 
 const theme = createTheme({
   shape: {
@@ -55,6 +56,7 @@ function App() {
             <Route path="/classes/" element={<ClassesPage />} />
             <Route path="/classes/:id" element={<ClassDetailsPage />} />
             <Route path="/logout" element={<LogoutPage />} />
+            <Route path="/attendance" element={<AttendancePage />} />
           </Routes>
         </header>
       </div>

@@ -7,7 +7,6 @@ import {
 } from "../../store/student/selectors";
 import { fetchGroupNames, fetchStudents } from "../../store/student/thunks";
 import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
-import SearchIcon from "@mui/icons-material/SearchRounded";
 import "./styles.css";
 import FilterGroupName from "../../components/FilterGroupName/FilterGroupName";
 import AddStudentForm from "../../components/AddStudentForm/AddStudentForm";
@@ -18,9 +17,6 @@ import {
   filterBySearch,
   filterByStatus,
 } from "../../utils/filters";
-import { IconButton, InputAdornment, TextField } from "@mui/material";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 
 export default function StudentsPage() {
   const dispatch = useDispatch();
@@ -33,6 +29,8 @@ export default function StudentsPage() {
   const students = useSelector(selectStudents);
 
   const groupNames = useSelector(selectGroupNames);
+
+  console.log(groupNames);
 
   const [sortBy, setSortBy] = useState("firstName");
   const [sortDirection, setSortDirection] = useState("ascending");
@@ -57,6 +55,9 @@ export default function StudentsPage() {
 
   return (
     <div className="page">
+      <div>
+        <h1 className="page-title">Student Overview</h1>
+      </div>
       <div className="controls">
         <div className="students-search-input-and-button">
           <SearchRoundedIcon
@@ -139,53 +140,55 @@ export default function StudentsPage() {
             className="button button-primary students-page-add-student-button"
             onClick={() => setOpenForm(true)}
           >
-            {/* <AddCircleOutlineIcon />  */}
             Add Student
           </button>
           <AddStudentForm
             open={openForm}
+            groupNames={groupNames}
             close={() => {
               setOpenForm(false);
             }}
           />
         </div>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th style={{ width: "4%" }}></th>
-            <th style={{ width: "14%" }}>Status</th>
-            <div className="students-page-table-column-name">
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th style={{ width: "4%" }}></th>
+              <th style={{ width: "14%" }}>Status</th>
+
               <th>Name</th>
-            </div>
-            <th style={{ width: "13%" }}>Gender</th>
-            <th style={{ width: "15%" }}>Date of Birth</th>
-            <th style={{ width: "12%" }}>Group</th>
-            <th style={{ width: "15%" }}>Ref nr</th>
-            <th style={{ width: "6%" }}>BSN</th>
-            <th style={{ width: "4%" }}></th>
-          </tr>
-        </thead>
-        <tbody>
-          {!students
-            ? "Loading.."
-            : renderStudents.map((student) => (
-                <StudentTableRow
-                  key={student.id}
-                  id={student.id}
-                  firstName={student.firstName}
-                  affix={student.affix}
-                  lastName={student.lastName}
-                  gender={student.gender}
-                  dateOfBirth={student.dateOfBirth}
-                  group={student.groups.map((group) => group.name)}
-                  refNr={student.ref}
-                  bsn={student.bsn}
-                  status={student.status}
-                />
-              ))}
-        </tbody>
-      </table>
+
+              <th style={{ width: "13%" }}>Gender</th>
+              <th style={{ width: "15%" }}>Date of Birth</th>
+              <th style={{ width: "12%" }}>Group</th>
+              <th style={{ width: "15%" }}>Ref nr</th>
+              <th style={{ width: "6%" }}>BSN</th>
+              <th style={{ width: "4%" }}></th>
+            </tr>
+          </thead>
+          <tbody>
+            {!students
+              ? "Loading.."
+              : renderStudents.map((student) => (
+                  <StudentTableRow
+                    key={student.id}
+                    id={student.id}
+                    firstName={student.firstName}
+                    affix={student.affix}
+                    lastName={student.lastName}
+                    gender={student.gender}
+                    dateOfBirth={student.dateOfBirth}
+                    group={student.groups.map((group) => group.name)}
+                    refNr={student.ref}
+                    bsn={student.bsn}
+                    status={student.status}
+                  />
+                ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

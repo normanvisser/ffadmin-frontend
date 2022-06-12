@@ -1,11 +1,13 @@
 import axios from "axios";
 import { api_url } from "../../config/constants";
 import {
+  getAttendances,
   getGroupDetails,
   getGroupNames,
   getGroups,
   getSpecificStudent,
   getStudents,
+  getUsers,
 } from "./slice";
 
 export const fetchStudents = async (dispatch, getState) => {
@@ -46,12 +48,13 @@ export const createNewStudent =
     lastName,
     gender,
     dateOfBirth,
-    bsn,
-    ref,
     startingDate,
+    bsn,
+    groupId,
     contractSigned,
-    webCode,
     extension,
+    webCode,
+    ref,
     status
   ) =>
   async (dispatch, getState) => {
@@ -62,12 +65,13 @@ export const createNewStudent =
         lastName,
         gender,
         dateOfBirth,
-        bsn,
-        ref,
         startingDate,
+        bsn,
+        groupId,
         contractSigned,
-        webCode,
         extension,
+        webCode,
+        ref,
         status,
       });
       console.log(response);
@@ -95,3 +99,39 @@ export const fetchClassDetails = (groupId) => async (dispatch, getState) => {
     console.log(e);
   }
 };
+
+export const fetchAttendances = async (dispatch, getState) => {
+  try {
+    const response = await axios.get(`${api_url}/attendances/all`);
+    dispatch(getAttendances(response.data));
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+export const fetchUsers = async (dispatch, getState) => {
+  try {
+    const response = await axios.get(`${api_url}/users/all`);
+    dispatch(getUsers(response.data));
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+export const createGroup =
+  (name, level, hours, startDate, teacherId, coTeacherId) =>
+  async (dispatch, getState) => {
+    try {
+      const response = await axios.post(`${api_url}/groups/addNew`, {
+        name,
+        level,
+        hours,
+        startDate,
+        teacherId,
+        coTeacherId,
+      });
+      console.log(response.data);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };

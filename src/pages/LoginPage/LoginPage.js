@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./styles.css";
 import { loginUser } from "../../store/user/thunks";
 import { selectToken } from "../../store/user/selectors";
-import logoFc from "./fc-logo.jpg";
+import logoFc from "./fc-logo-login.jpg";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -34,19 +34,22 @@ export default function LoginPage() {
         />
         <label>Email</label>
         <input
-          className="input-field-login-page"
+          className="form-input"
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <label>Password</label>
         <input
-          className="input-field-login-page"
+          className="form-input"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="login-page-button">
+        <button
+          type="submit"
+          className="button button-primary button-login-page"
+        >
           Log In
         </button>
       </form>

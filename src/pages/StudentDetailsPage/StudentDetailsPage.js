@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchSpecificStudent } from "../../store/student/thunks";
 import { selectSpecificStudent } from "../../store/student/selectors";
 import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
@@ -21,10 +21,57 @@ export default function StudentDetailsPage() {
 
   console.log(studentDetails);
 
+  const totalHours = studentDetails?.studentAttendances
+    .map((e) => e.totalHours)
+    .reduce((previousValue, currentValue) => previousValue + currentValue);
+
+  const totalLessons = studentDetails?.studentAttendances.map(
+    (e) => e.totalHours
+  ).length;
+
+  console.log(totalHours, totalLessons);
+
+  const attended = studentDetails?.studentAttendances.filter((e) => e.attended);
+  const totalAttendedHours = attended
+    ?.map((e) => e.totalHours)
+    .reduce((previousValue, currentValue) => previousValue + currentValue);
+  const totalAttendedLessons = attended?.length;
+
+  console.log("attended", attended);
+  console.log("attendedHours", totalAttendedHours);
+  console.log("attendedLessons", totalAttendedLessons);
+
+  const cancelled = studentDetails?.studentAttendances.filter(
+    (e) => e.authorizedAbsence
+  );
+  const totalCancelledHours = cancelled
+    ?.map((e) => e.totalHours)
+    .reduce((previousValue, currentValue) => previousValue + currentValue);
+  const totalCancelledLessons = cancelled?.length;
+
+  console.log(totalCancelledHours, totalCancelledLessons);
+
+  const noShow = studentDetails?.studentAttendances.filter(
+    (e) => e.authorizedAbsence === false
+  );
+  const totalNoShowHours = noShow
+    ?.map((e) => e.totalHours)
+    .reduce((previousValue, currentValue) => previousValue + currentValue);
+  const totalNoShowLessons = noShow?.length;
+
+  console.log(totalNoShowHours, totalNoShowLessons);
+
+  const navigate = useNavigate();
+
   return (
-    <div className="page">
+    <div className="studentDetailsPage">
       <div className="top-bar">
-        <button className="student-details_back-button">
+        <button
+          className="student-details_back-button"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
           <ArrowBackIosRoundedIcon />
         </button>
       </div>
@@ -49,7 +96,7 @@ export default function StudentDetailsPage() {
                   </p>
                 </div>
 
-                <button className="student-details_edit-button button-secondary">
+                <button className="student-details_edit-button button-small button-no-fill-primary">
                   Edit
                 </button>
               </div>
@@ -69,64 +116,90 @@ export default function StudentDetailsPage() {
               </div>
             </div>
           </div>
-          <Divider variant="middle" />
           <div className="title-and-attendance-details">
             <div>
               <h4>Attendance</h4>
             </div>
-            <div>
-              <p>
-                Group:{" "}
-                {studentDetails.groups.map((group) => (
-                  <>
-                    {group.name} ({group.level})
-                  </>
-                ))}
-              </p>
-            </div>
             <div className="attendance-details">
               <div className="attendance">
-                <h3>Total</h3>
-                <div className="total-attendance">
-                  <p className="total-attendance-number">15</p>
-                  <p>lessons</p>
+                <div className="attendance-title-and-percentage">
+                  <h3>Total</h3>
                 </div>
-                <div className="total-attendance">
-                  <p className="total-attendance-number">60</p>
-                  <p>hours</p>
-                </div>
-              </div>
-              <div className="attendance">
-                <h3>Attended</h3>
-                <div className="total-attendance">
-                  <p className="total-attendance-number">15</p>
-                  <p>lessons</p>
-                </div>
-                <div className="total-attendance">
-                  <p className="total-attendance-number">60</p>
-                  <p>hours</p>
+                <div className="attendance-lessons-hours">
+                  <div className="total-attendance">
+                    <p className="total-attendance-number">{totalLessons}</p>
+                    <p className="total-attendance-number">{totalHours}</p>
+                  </div>
+                  <div className="total-attendance">
+                    <p>lessons</p>
+                    <p>hours</p>
+                  </div>
                 </div>
               </div>
               <div className="attendance">
-                <h3>Cancelled</h3>
-                <div className="total-attendance">
-                  <p className="total-attendance-number">15</p>
-                  <p>lessons</p>
+                <div className="attendance-title-and-percentage">
+                  <h3>Attended</h3>
+                  <p className="attendance-percentage attended">
+                    {Math.round((totalAttendedLessons / totalLessons) * 100)}%
+                  </p>
                 </div>
-                <div className="total-attendance">
-                  <p className="total-attendance-number">60</p>
-                  <p>hours</p>
+                <div className="attendance-lessons-hours">
+                  <div className="total-attendance">
+                    <p className="total-attendance-number">
+                      {totalAttendedLessons}
+                    </p>
+                    <p className="total-attendance-number">
+                      {totalAttendedHours}
+                    </p>
+                  </div>
+                  <div className="total-attendance">
+                    <p>lessons</p>
+                    <p>hours</p>
+                  </div>
                 </div>
               </div>
               <div className="attendance">
-                <h3>No Show</h3>
-                <div className="total-attendance">
-                  <p className="total-attendance-number">15</p>
-                  <p>lessons</p>
+                <div className="attendance-title-and-percentage">
+                  <h3>Cancelled</h3>
+                  <p className="attendance-percentage cancelled">
+                    {Math.round((totalCancelledLessons / totalLessons) * 100)}%
+                  </p>
                 </div>
-                <div className="total-attendance">
-                  <p className="total-attendance-number">60</p>
-                  <p>hours</p>
+                <div className="attendance-lessons-hours">
+                  <div className="total-attendance">
+                    <p className="total-attendance-number">
+                      {totalCancelledLessons}
+                    </p>
+                    <p className="total-attendance-number">
+                      {totalCancelledHours}
+                    </p>
+                  </div>
+                  <div className="total-attendance">
+                    <p>lessons</p>
+                    <p>hours</p>
+                  </div>
+                </div>
+              </div>
+              <div className="attendance">
+                <div className="attendance-title-and-percentage">
+                  <h3>No Show</h3>
+                  <p className="attendance-percentage noshow">
+                    {Math.round((totalNoShowLessons / totalLessons) * 100)}%
+                  </p>
+                </div>
+                <div className="attendance-lessons-hours">
+                  <div className="total-attendance">
+                    <p className="total-attendance-number">
+                      {totalNoShowLessons}
+                    </p>
+                    <p className="total-attendance-number">
+                      {totalNoShowHours}
+                    </p>
+                  </div>
+                  <div className="total-attendance">
+                    <p>lessons</p>
+                    <p>hours</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -135,20 +208,31 @@ export default function StudentDetailsPage() {
               <button className="button-text-only">See Details</button>
             </div>
           </div>
-          <Divider variant="middle" />
+          <Divider />
           <div>
             <h4>Student Information</h4>
             <div className="student-details_student-school-information">
               <div className="student-details_student-school-info-description">
+                <p>Current class:</p>
+                <p>Current level:</p>
                 <p>Reference nr:</p>
-                <p>Contract Signed:</p>
-
                 <p>WEB-code:</p>
+                <p>Contract Signed:</p>
                 <p>Extension of contract:</p>
               </div>
               <div>
                 <p>
+                  {studentDetails.groups.map((group) => (
+                    <>
+                      {group.name} ({group.level})
+                    </>
+                  ))}
+                </p>
+                <p>{studentDetails.groups.map((group) => group.level)}</p>
+
+                <p>
                   {studentDetails.ref}
+
                   <ContentCopyIcon sx={{ fontSize: 14, paddingLeft: 1 }} />
                 </p>
                 <p>

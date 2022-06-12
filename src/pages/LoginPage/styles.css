@@ -11,25 +11,15 @@
   border-radius: 5px;
   margin: auto;
   width: 30%;
-}
-
-.input-field-login-page {
-  padding: var(--padding-input-field);
-  border: 1px solid var(--light-grey);
-  border-radius: 3px;
-  margin-bottom: 15px;
+  background-color: #fff;
 }
 
 .login-page-logo {
   padding-bottom: 20px;
 }
 
-.login-page-button {
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: 3px;
-  width: 90px;
-  padding: 9px 20px;
+.button-login-page {
+  padding: 9px 30px;
   margin-top: 16px;
   color: #fff;
   font-weight: 700;

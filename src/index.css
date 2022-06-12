@@ -8,6 +8,16 @@ body {
   background: var(--bg-color);
 }
 
+h1 {
+  /* color: var(--color-grey-7); */
+  color: var(--secondary-color);
+  /* color: #5c6a7c; */
+}
+
+h3 {
+  color: var(--secondary-color);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -16,6 +26,7 @@ code {
 html {
   --primary-color: rgb(0, 170, 255);
   --primary-hover-color: rgb(43, 184, 255);
+  --primary-hover-color-light: #ecf1fa;
   --secondary-color: rgb(61, 0, 33);
   --bg-color: rgb(247, 244, 250);
   --bg-color-hover: rgb(246, 238, 255);
@@ -27,10 +38,21 @@ html {
   --font-grey-light: #a0abb9;
   --font-grey-dark: #5c6a7c;
 
-  --color-status-green: #4acd92;
-  --color-status-orange: #f29d2d;
+  --color-status-green: #3ab17b;
+  --color-status-green-bg: #d4efdc;
+  --color-status-orange: #f88305;
+  --color-status-orange-bg: #ffe0b7;
   --color-status-red: #ee3f3f;
-  --color-status-grey: #bdbdbd;
+  --color-status-red-bg: #fcd3d3;
+  --color-status-grey: #9a9898;
+  --color-status-grey-bg: #edebeb;
+
+  --percentage-attended-color: #0b9f0b;
+  --percentage-attended-bg-color: #b9f3b9;
+  --percentage-cancelled-color: #de940c;
+  --percentage-cancelled-bg-color: #ffe2ae;
+  --percentage-noshow-color: #ff3d3d;
+  --percentage-noshow-bg-color: #ffcaca;
 
   --color-grey-1: #fafafa;
   --color-grey-2: #f5f5f5;
@@ -50,6 +72,45 @@ html {
   --padding-input-field: 8px 10px;
 }
 
-/* Green */
-/* --primary-color: #239780; */
-/* --hover-color: #2ba18a; */
+.page-title {
+  margin: 0;
+  padding: 40px 0 20px 40px;
+}
+
+.form-input {
+  border: 2px solid var(--color-grey-4);
+  border-radius: 5px;
+  padding: 4px 8px;
+  margin-bottom: 10px;
+  outline: none;
+  /* min-width: 200px; */
+}
+
+.form-input:focus {
+  border: 2px solid var(--primary-color);
+}
+
+.width-45 {
+  width: 45%;
+}
+
+.vertical-margin-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.font-weight-500 {
+  font-weight: 500;
+}
+
+label {
+  font-weight: 700;
+  color: #5c6a7c !important;
+  /* color: var(--color-grey-7) !important; */
+  /* color: var(--secondary-color) !important; */
+  padding: 0px 0px 5px 0px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

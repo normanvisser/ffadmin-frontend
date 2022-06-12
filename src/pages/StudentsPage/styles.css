@@ -1,13 +1,18 @@
 .page {
   /* margin: 40px 60px; */
-  margin: 40px 30px 40px 250px;
+  margin: 0px 30px 40px 250px;
 }
 
 .controls {
   display: flex;
   justify-content: space-between;
-  margin-right: 30px;
-  margin-left: 30px;
+  padding-top: 10px;
+  padding-right: 38px;
+  padding-left: 38px;
+  padding-bottom: 2%;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-color);
 }
 
 .students-search-input-and-button {
@@ -97,16 +102,15 @@
   margin: auto 0;
 }
 
+.students-page-add-student-button:focus-visible {
+  outline: none;
+}
+
 table {
   table-layout: auto;
   border-collapse: collapse;
   width: 100%;
-  margin: 2% auto;
   background-color: transparent;
-}
-
-td:last-child {
-  text-align: right;
 }
 
 table th {
@@ -114,11 +118,10 @@ table th {
   color: var(--color-grey-6);
   padding: 20px 0px;
   font-size: 12px;
-}
-
-table td {
-  border-bottom: solid 1px #e3e3e3;
-  padding: 15px 0px;
+  /* position: sticky;
+  top: 71px; */
+  background-color: var(--bg-color);
+  /* z-index: -1; */
 }
 
 /* table tr:hover {
@@ -128,17 +131,13 @@ table td {
 } */
 
 table tbody tr:hover {
-  background-color: var(--bg-color-hover);
+  background-color: var(--primary-hover-color-light);
 }
 
 table tr td:first-child {
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
   border-bottom: none;
 }
 table tr td:last-child {
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
   border-bottom: none;
 }
 
@@ -156,10 +155,13 @@ table tr:last-child td {
   /* padding-bottom: 35px; */
 }
 
-/* tr:not(:nth-child(1)):hover {
-  background-color: transparent;
-} */
+table td {
+  border-bottom: solid 1px #e3e3e3;
+  padding: 15px 0px;
+  /* z-index: -2;
+  position: relative; */
+}
 
-/* table tr:nth-child(odd) td {
-  background-color: #e7edf0;
-} */
+td:last-child {
+  text-align: right;
+}

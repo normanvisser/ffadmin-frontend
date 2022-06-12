@@ -1,0 +1,11 @@
+.add-attendance-form {
+  position: fixed;
+  margin-top: auto;
+  top: 17%;
+  left: 31%;
+  width: 500px;
+  background-color: #fff;
+  padding: 0px 25px 0px 25px;
+  border-radius: 10px;
+  align-items: stretch;
+}

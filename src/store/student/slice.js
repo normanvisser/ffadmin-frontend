@@ -5,6 +5,8 @@ const initialState = {
   groups: [],
   studentDetails: null, // GET /students/:id -> includes everything
   groupDetails: null,
+  attendances: null,
+  users: null,
 };
 
 export const studentSlice = createSlice({
@@ -26,6 +28,12 @@ export const studentSlice = createSlice({
     getGroupDetails: (state, action) => {
       state.groupDetails = action.payload;
     },
+    getAttendances: (state, action) => {
+      state.attendances = action.payload;
+    },
+    getUsers: (state, action) => {
+      state.users = action.payload;
+    },
   },
 });
 
@@ -35,6 +43,8 @@ export const {
   getGroupNames,
   getGroups,
   getGroupDetails,
+  getAttendances,
+  getUsers,
 } = studentSlice.actions;
 
 export default studentSlice.reducer;

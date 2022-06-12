@@ -9,18 +9,18 @@ export default function ClassDetailsPage() {
   const dispatch = useDispatch();
   const classId = useParams().id;
   const classDetails = useSelector(selectGroupDetails);
-  console.log(classDetails);
+  console.log("Class details", classDetails);
 
   useEffect(() => {
     dispatch(fetchClassDetails(classId));
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
       {!classDetails ? (
         "Loading"
       ) : (
-        <div>
+        <div className="page">
           <p>Name: {classDetails.name}</p>
           <p>Level: {classDetails.level}</p>
           <div>

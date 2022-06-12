@@ -17,3 +17,11 @@ export const selectGroups = (reduxState) => {
 export const selectGroupDetails = (reduxState) => {
   return reduxState.student.groupDetails;
 };
+
+export const selectAttendances = (reduxState) => {
+  return reduxState.student.attendances;
+};
+
+export const selectUsers = (reduxState) => {
+  return reduxState.student.users;
+};

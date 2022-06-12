@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import AddClassForm from "../../components/AddClassForm/AddClassForm";
 import ClassesTableRow from "../../components/ClassesTableRow/ClassesTableRow";
 import { selectGroups } from "../../store/student/selectors";
 import { fetchClasses } from "../../store/student/thunks";
@@ -9,7 +10,7 @@ export default function ClassesPage() {
 
   useEffect(() => {
     dispatch(fetchClasses);
-  }, []);
+  }, [dispatch]);
 
   const classes = useSelector(selectGroups);
 
@@ -17,8 +18,22 @@ export default function ClassesPage() {
 
   console.log("Classes", classes);
 
+  const [openForm, setOpenForm] = useState(false);
+
   return (
-    <div>
+    <div className="page">
+      <div className="display-flex-space-between">
+        <h1>Class Overview</h1>
+      </div>
+      <div>
+        <button
+          className="button button-primary"
+          onClick={() => setOpenForm(true)}
+        >
+          Add Class
+        </button>
+        <AddClassForm open={openForm} close={() => setOpenForm(false)} />
+      </div>
       <table>
         <thead>
           <tr>
