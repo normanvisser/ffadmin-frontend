@@ -5,8 +5,14 @@
 .font-weight-600 {
   font-weight: 600;
 }
+
 .student-row {
   cursor: pointer;
+}
+
+.students-page-avatars {
+  height: 40px;
+  border-radius: 30px;
 }
 
 .students-page-current-status {

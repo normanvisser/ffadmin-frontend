@@ -34,6 +34,12 @@ export const studentSlice = createSlice({
     getUsers: (state, action) => {
       state.users = action.payload;
     },
+    addStudent: (state, action) => {
+      state.students = [...state.students, action.payload];
+    },
+    addAttendance: (state, action) => {
+      state.attendances = [...state.attendances, action.payload];
+    },
   },
 });
 
@@ -45,6 +51,8 @@ export const {
   getGroupDetails,
   getAttendances,
   getUsers,
+  addStudent,
+  addAttendance,
 } = studentSlice.actions;
 
 export default studentSlice.reducer;

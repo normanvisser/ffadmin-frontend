@@ -1,29 +1,46 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { fetchSpecificStudent } from "../../store/student/thunks";
-import { selectSpecificStudent } from "../../store/student/selectors";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import {
+  fetchGroupNames,
+  fetchSpecificStudent,
+} from "../../store/student/thunks";
+import {
+  selectGroupNames,
+  selectSpecificStudent,
+} from "../../store/student/selectors";
 import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import Divider from "@mui/material/Divider";
 import "./styles.css";
-import studentImage from "./jim-carrey.jpg";
+import EditStudentForm from "../../components/EditStudentForm/EditStudentForm";
 
 export default function StudentDetailsPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const groupNames = useSelector(selectGroupNames);
+
   const studentId = useParams().id;
+
+  console.log("student id", studentId);
 
   useEffect(() => {
     dispatch(fetchSpecificStudent(studentId));
+    dispatch(fetchGroupNames);
   }, []);
 
   const studentDetails = useSelector(selectSpecificStudent);
 
-  console.log(studentDetails);
+  const attendance = studentDetails?.studentAttendances;
 
-  const totalHours = studentDetails?.studentAttendances
-    .map((e) => e.totalHours)
-    .reduce((previousValue, currentValue) => previousValue + currentValue);
+  console.log("fetched student", studentDetails);
+
+  const totalHours =
+    attendance?.length > 0 &&
+    attendance
+      .map((e) => e.totalHours)
+      .reduce((previousValue, currentValue) => previousValue + currentValue);
 
   const totalLessons = studentDetails?.studentAttendances.map(
     (e) => e.totalHours
@@ -32,9 +49,12 @@ export default function StudentDetailsPage() {
   console.log(totalHours, totalLessons);
 
   const attended = studentDetails?.studentAttendances.filter((e) => e.attended);
-  const totalAttendedHours = attended
-    ?.map((e) => e.totalHours)
-    .reduce((previousValue, currentValue) => previousValue + currentValue);
+
+  const totalAttendedHours =
+    attended?.length > 0 &&
+    attended
+      .map((e) => e.totalHours)
+      .reduce((previousValue, currentValue) => previousValue + currentValue);
   const totalAttendedLessons = attended?.length;
 
   console.log("attended", attended);
@@ -44,9 +64,12 @@ export default function StudentDetailsPage() {
   const cancelled = studentDetails?.studentAttendances.filter(
     (e) => e.authorizedAbsence
   );
-  const totalCancelledHours = cancelled
-    ?.map((e) => e.totalHours)
-    .reduce((previousValue, currentValue) => previousValue + currentValue);
+
+  const totalCancelledHours =
+    cancelled?.length > 0 &&
+    cancelled
+      ?.map((e) => e.totalHours)
+      .reduce((previousValue, currentValue) => previousValue + currentValue);
   const totalCancelledLessons = cancelled?.length;
 
   console.log(totalCancelledHours, totalCancelledLessons);
@@ -54,14 +77,17 @@ export default function StudentDetailsPage() {
   const noShow = studentDetails?.studentAttendances.filter(
     (e) => e.authorizedAbsence === false
   );
-  const totalNoShowHours = noShow
-    ?.map((e) => e.totalHours)
-    .reduce((previousValue, currentValue) => previousValue + currentValue);
+
+  const totalNoShowHours =
+    noShow?.length > 0 &&
+    noShow
+      ?.map((e) => e.totalHours)
+      .reduce((previousValue, currentValue) => previousValue + currentValue);
   const totalNoShowLessons = noShow?.length;
 
   console.log(totalNoShowHours, totalNoShowLessons);
 
-  const navigate = useNavigate();
+  const [openForm, setOpenForm] = useState(false);
 
   return (
     <div className="studentDetailsPage">
@@ -81,7 +107,7 @@ export default function StudentDetailsPage() {
         <div>
           <div className="image-personal-details">
             <img
-              src={studentImage}
+              src={studentDetails.imageUrl}
               alt={`${studentDetails.firstName} ${studentDetails.lastName}`}
               className="student-image"
             />
@@ -96,9 +122,34 @@ export default function StudentDetailsPage() {
                   </p>
                 </div>
 
-                <button className="student-details_edit-button button-small button-no-fill-primary">
+                <button
+                  style={{ cursor: "pointer" }}
+                  className="student-details_edit-button button-small button-no-fill-primary"
+                  onClick={() => setOpenForm(true)}
+                >
                   Edit
                 </button>
+                <EditStudentForm
+                  open={openForm}
+                  groupNames={groupNames}
+                  close={() => {
+                    setOpenForm(false);
+                  }}
+                  id={studentDetails.id}
+                  firstName={studentDetails.firstName}
+                  lastName={studentDetails.lastName}
+                  initials={studentDetails.initials}
+                  gender={studentDetails.gender}
+                  dateOfBirth={studentDetails.dateOfBirth}
+                  bsn={studentDetails.bsn}
+                  refe={studentDetails.ref}
+                  startingDate={studentDetails.startingDate}
+                  class={studentDetails.groups[0].id}
+                  contractSigned={studentDetails.contractSigned}
+                  extension={studentDetails.extension}
+                  webCode={studentDetails.webCode}
+                  status={studentDetails.status}
+                />
               </div>
               <div className="student-details_personal-details">
                 <div className="student-details_personal-details-description">
@@ -118,7 +169,7 @@ export default function StudentDetailsPage() {
           </div>
           <div className="title-and-attendance-details">
             <div>
-              <h4>Attendance</h4>
+              <h2>Attendance</h2>
             </div>
             <div className="attendance-details">
               <div className="attendance">
@@ -205,14 +256,20 @@ export default function StudentDetailsPage() {
             </div>
 
             <div>
-              <button className="button-text-only">See Details</button>
+              <button
+                className="button-text-only cursor-pointer"
+                onClick={() => navigate("/attendance")}
+              >
+                See Details
+              </button>
             </div>
           </div>
-          <Divider />
+          <Divider sx={{ pt: "20px", mb: "30px" }} />
           <div>
-            <h4>Student Information</h4>
+            <h2>Student Information</h2>
             <div className="student-details_student-school-information">
               <div className="student-details_student-school-info-description">
+                <p>Starting Date:</p>
                 <p>Current class:</p>
                 <p>Current level:</p>
                 <p>Reference nr:</p>
@@ -221,11 +278,14 @@ export default function StudentDetailsPage() {
                 <p>Extension of contract:</p>
               </div>
               <div>
+                <p>{studentDetails.startingDate}</p>
                 <p>
                   {studentDetails.groups.map((group) => (
-                    <>
-                      {group.name} ({group.level})
-                    </>
+                    <Link to={`/classes/${group.id}`}>
+                      <>
+                        {group.name} ({group.level})
+                      </>
+                    </Link>
                   ))}
                 </p>
                 <p>{studentDetails.groups.map((group) => group.level)}</p>
@@ -237,7 +297,15 @@ export default function StudentDetailsPage() {
                 </p>
                 <p>
                   {studentDetails.webCode}{" "}
-                  <ContentCopyIcon sx={{ fontSize: 14, paddingLeft: 0.5 }} />
+                  <ContentCopyIcon
+                    sx={{ fontSize: 14, paddingLeft: 0.5 }}
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        studentDetails.webCode.textToCopy
+                      );
+                    }}
+                    className="cursor-pointer"
+                  />
                 </p>
                 <p>{studentDetails.contractSigned ? "Yes" : "No"}</p>
                 <p>{studentDetails.extension ? "Yes" : "No"}</p>

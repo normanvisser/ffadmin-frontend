@@ -1,0 +1,30 @@
+.class-details-page {
+  margin: 5px 60px 40px 280px;
+}
+
+.class-details-and-schedule {
+  width: 40%;
+}
+
+.class-details {
+  width: 40%;
+}
+
+.class-schedule {
+  width: 40%;
+}
+
+.class-details-students {
+  margin-top: 50px;
+}
+
+.class-details-student-list {
+  display: flex;
+  align-items: center;
+}
+
+.class-details-student-image {
+  height: 40px;
+  border-radius: 30px;
+  margin: 8px 15px 8px 0;
+}

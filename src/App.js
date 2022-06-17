@@ -14,6 +14,7 @@ import { bootstrapLoginState } from "./store/user/thunks";
 import LogoutPage from "./pages/LogoutPage/LogoutPage";
 import { selectToken, selectLoginAttempt } from "./store/user/selectors";
 import AttendancePage from "./pages/AttendancePage/AttendancePage";
+import DashboardPage from "./pages/DashboardPage/DashboardPage";
 
 const theme = createTheme({
   shape: {
@@ -51,6 +52,7 @@ function App() {
           <div>{/* <NavBar /> */}</div>
           <Routes>
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/" element={<DashboardPage />} />
             <Route path="/students" element={<StudentsPage />} />
             <Route path="/students/:id" element={<StudentDetailsPage />} />
             <Route path="/classes/" element={<ClassesPage />} />

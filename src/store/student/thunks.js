@@ -1,6 +1,8 @@
 import axios from "axios";
+
 import { api_url } from "../../config/constants";
 import {
+  addStudent,
   getAttendances,
   getGroupDetails,
   getGroupNames,
@@ -55,7 +57,8 @@ export const createNewStudent =
     extension,
     webCode,
     ref,
-    status
+    status,
+    imageUrl
   ) =>
   async (dispatch, getState) => {
     try {
@@ -73,8 +76,11 @@ export const createNewStudent =
         webCode,
         ref,
         status,
+        imageUrl,
       });
+
       console.log(response);
+      dispatch(addStudent(response.data));
     } catch (e) {
       console.log(e.message);
     }
@@ -135,3 +141,88 @@ export const createGroup =
       console.log(e.message);
     }
   };
+
+export const addAttendance =
+  (
+    firstName,
+    lastName,
+    date,
+    startTime,
+    endTime,
+    totalHours,
+    attended,
+    authorizedAbsence,
+    absenceReason
+  ) =>
+  async (dispatch, getState) => {
+    try {
+      const response = await axios.post(`${api_url}/attendances/addNew`, {
+        firstName,
+        lastName,
+        date,
+        startTime,
+        endTime,
+        totalHours,
+        attended,
+        authorizedAbsence,
+        absenceReason,
+      });
+      console.log(response);
+
+      // dispatch(response.data);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
+export const editStudent =
+  (
+    firstName,
+    initials,
+    lastName,
+    gender,
+    dateOfBirth,
+    startingDate,
+    bsn,
+    groupId,
+    contractSigned,
+    extension,
+    webCode,
+    ref,
+    status,
+    id
+  ) =>
+  async (dispatch, getState) => {
+    try {
+      const response = await axios.post(`${api_url}/students/edit`, {
+        firstName,
+        initials,
+        lastName,
+        gender,
+        dateOfBirth,
+        startingDate,
+        bsn,
+        groupId,
+        contractSigned,
+        extension,
+        webCode,
+        ref,
+        status,
+        id,
+      });
+
+      console.log("response", response);
+
+      dispatch(getSpecificStudent(response.data));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+export const removeStudent = (id) => async (dispatch, getState) => {
+  try {
+    const response = await axios.delete(`${api_url}/students/delete/${id}`);
+  } catch (e) {
+    console.log(e);
+  }
+};

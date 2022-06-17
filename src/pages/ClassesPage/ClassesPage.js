@@ -4,6 +4,7 @@ import AddClassForm from "../../components/AddClassForm/AddClassForm";
 import ClassesTableRow from "../../components/ClassesTableRow/ClassesTableRow";
 import { selectGroups } from "../../store/student/selectors";
 import { fetchClasses } from "../../store/student/thunks";
+import "./styles.css";
 
 export default function ClassesPage() {
   const dispatch = useDispatch();
@@ -21,13 +22,13 @@ export default function ClassesPage() {
   const [openForm, setOpenForm] = useState(false);
 
   return (
-    <div className="page">
-      <div className="display-flex-space-between">
+    <div className="classes-page">
+      <div className="display-flex-space-between classes-page-title">
         <h1>Class Overview</h1>
       </div>
-      <div>
+      <div className="lalala">
         <button
-          className="button button-primary"
+          className="button button-primary add-class-button"
           onClick={() => setOpenForm(true)}
         >
           Add Class
@@ -37,13 +38,14 @@ export default function ClassesPage() {
       <table>
         <thead>
           <tr>
-            {/* <th style={{ width: "8%" }}>Status</th> */}
-            <th>Name</th>
-            <th>Level</th>
-            <th style={{ width: "13%" }}>Teacher</th>
-            <th style={{ width: "15%" }}>Co-Teacher</th>
-            <th style={{ width: "12%" }}>Start Date</th>
-            <th style={{ width: "15%" }}>Total Hours</th>
+            <th style={{ width: "1.6%" }}></th>
+            <th style={{ width: "10%" }}>Name</th>
+            <th style={{ width: "10%" }}>Level</th>
+            <th style={{ width: "10%" }}>Teacher</th>
+            <th style={{ width: "10%" }}>Co-Teacher</th>
+            <th style={{ width: "10%" }}>Start Date</th>
+            <th style={{ width: "10%" }}>Total Hours</th>
+            <th style={{ width: "5%" }}></th>
           </tr>
         </thead>
         <tbody>
@@ -67,7 +69,6 @@ export default function ClassesPage() {
                     )}
                   startDate={group.startDate}
                   hours={group.hours}
-                  // status={group.status}
                 />
               ))}
         </tbody>

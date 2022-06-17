@@ -1,31 +1,37 @@
 import { Divider } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { createNewStudent } from "../../store/student/thunks";
+import {
+  createNewStudent,
+  removeStudent,
+  editStudent,
+} from "../../store/student/thunks";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import "./styles.css";
+import { useNavigate } from "react-router-dom";
 
-export default function AddStudentForm({ groupNames, open, close }) {
+export default function EditStudentForm(props) {
   const dispatch = useDispatch();
-  const [firstName, setFirstName] = useState("");
-  const [initials, setInitials] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [gender, setGender] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [bsn, setBsn] = useState("");
-  const [ref, setRef] = useState("");
-  const [startingDate, setStartingDate] = useState("");
-  const [contractSigned, setContractSigned] = useState(true);
-  const [webCode, setWebCode] = useState("");
-  const [extension, setExtension] = useState(false);
-  const [status, setStatus] = useState("Active");
-  const [groupId, setGroupId] = useState("");
+  const navigate = useNavigate();
+  const [firstName, setFirstName] = useState(props.firstName);
+  const [initials, setInitials] = useState(props.initials);
+  const [lastName, setLastName] = useState(props.lastName);
+  const [gender, setGender] = useState(props.gender);
+  const [dateOfBirth, setDateOfBirth] = useState(props.dateOfBirth);
+  const [bsn, setBsn] = useState(props.bsn);
+  const [ref, setRef] = useState(props.refe);
+  const [startingDate, setStartingDate] = useState(props.startingDate);
+  const [contractSigned, setContractSigned] = useState(props.contractSigned);
+  const [webCode, setWebCode] = useState(props.webCode);
+  const [extension, setExtension] = useState(props.extension);
+  const [status, setStatus] = useState(props.status);
+  const [groupId, setGroupId] = useState(props.class);
   const [imageUrl, setImageUrl] = useState("");
 
   const submitForm = (e) => {
     e.preventDefault();
     dispatch(
-      createNewStudent(
+      editStudent(
         firstName,
         initials,
         lastName,
@@ -39,29 +45,22 @@ export default function AddStudentForm({ groupNames, open, close }) {
         webCode,
         ref,
         status,
-        imageUrl
+        props.id
+        // imageUrl
       )
     );
-    close();
-    setFirstName("");
-    setInitials("");
-    setLastName("");
-    setGender("");
-    setDateOfBirth("");
-    setBsn("");
-    setRef("");
-    setStartingDate("");
-    setContractSigned(true);
-    setWebCode("");
-    setExtension(false);
-    setStatus("Active");
-    setGroupId("");
-    setImageUrl("");
+    props.close();
+  };
+
+  const deleteStudent = (e) => {
+    e.preventDefault();
+    dispatch(removeStudent(props.id));
+    navigate("/students");
   };
 
   const escFunction = useCallback((event) => {
     if (event.keyCode === 27) {
-      close();
+      props.close();
     }
   }, []);
 
@@ -94,18 +93,20 @@ export default function AddStudentForm({ groupNames, open, close }) {
   };
   console.log(imageUrl);
 
-  if (!open) return null;
+  console.log("group names", props.groupNames);
+
+  if (!props.open) return null;
 
   return (
     <>
-      <div className="overlay" onClick={close} />
+      <div className="overlay" onClick={props.close} />
       <form className="add-student-form">
         <div className="display-flex-space-between">
           <h1>Add New Student</h1>
           <CloseRoundedIcon
             sx={{ color: "var(--color-grey-6)" }}
             className="vertical-margin-auto cursor-pointer"
-            onClick={close}
+            onClick={props.close}
           />
         </div>
         <Divider sx={{ marginBottom: 2.5 }} />
@@ -157,15 +158,33 @@ export default function AddStudentForm({ groupNames, open, close }) {
               <label for="male" className="font-weight-500">
                 Male
               </label>
-              <input type="radio" name="gender" id="male" value="male" />
+              <input
+                type="radio"
+                name="gender"
+                id="male"
+                value="male"
+                checked={gender === "male"}
+              />
               <label for="female" className="font-weight-500">
                 Female
               </label>
-              <input type="radio" name="gender" id="female" value="female" />
+              <input
+                type="radio"
+                name="gender"
+                id="female"
+                value="female"
+                checked={gender === "female"}
+              />
               <label for="other" className="font-weight-500">
                 Other
               </label>
-              <input type="radio" name="gender" id="other" value="other" />
+              <input
+                type="radio"
+                name="gender"
+                id="other"
+                value="other"
+                checked={gender === "other"}
+              />
             </div>
           </div>
         </div>
@@ -214,7 +233,7 @@ export default function AddStudentForm({ groupNames, open, close }) {
               className="form-input"
               value={groupId}
             >
-              {groupNames.map((e) => (
+              {props.groupNames.map((e) => (
                 <option value={e.id}>{e.name}</option>
               ))}
             </select>
@@ -232,13 +251,6 @@ export default function AddStudentForm({ groupNames, open, close }) {
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
-            {/* <input
-              type="text"
-              id="contractSigned"
-              name="contractSigned"
-              value={contractSigned}
-              onChange={(e) => setContractSigned(e.target.value)}
-            /> */}
           </div>
           <div className="display-flex-column width-45">
             <label for="extension">Extension</label>
@@ -250,13 +262,6 @@ export default function AddStudentForm({ groupNames, open, close }) {
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
-            {/* <input
-              type="text"
-              id="extension"
-              name="extension"
-              value={extension}
-              onChange={(e) => setExtension(e.target.value)}
-            /> */}
           </div>
         </div>
 
@@ -297,13 +302,6 @@ export default function AddStudentForm({ groupNames, open, close }) {
               <option value="Completed">Completed</option>
               <option value="Stopped">Stopped</option>
             </select>
-            {/* <input
-              type="text"
-              id="status"
-              name="status"
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-            /> */}
           </div>
           <div className="display-flex-column width-45">
             <label for="img">Select image:</label>
@@ -320,13 +318,26 @@ export default function AddStudentForm({ groupNames, open, close }) {
           </div>
         </div>
         <Divider sx={{ marginTop: 2.5 }} />
-        <div className="submit-cancel-buttons">
-          <button className="button button-secondary" onClick={close}>
-            Cancel
+        <div className="submit-cancel-delete-buttons">
+          <button
+            // type="button"
+            className="button button-delete"
+            onClick={deleteStudent}
+          >
+            Delete
           </button>
-          <button className="button button-primary" onClick={submitForm}>
-            Submit
-          </button>
+          <div>
+            <button
+              style={{ marginRight: "10px" }}
+              className="button button-secondary"
+              onClick={props.close}
+            >
+              Cancel
+            </button>
+            <button className="button button-primary" onClick={submitForm}>
+              Submit
+            </button>
+          </div>
         </div>
       </form>
     </>

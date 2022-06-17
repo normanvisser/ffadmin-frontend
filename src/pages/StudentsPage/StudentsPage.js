@@ -30,7 +30,7 @@ export default function StudentsPage() {
 
   const groupNames = useSelector(selectGroupNames);
 
-  console.log(groupNames);
+  console.log(students);
 
   const [sortBy, setSortBy] = useState("firstName");
   const [sortDirection, setSortDirection] = useState("ascending");
@@ -97,7 +97,7 @@ export default function StudentsPage() {
             </button>
           )}
           <p className="filter">
-            Group:
+            Class:
             <select
               value={groupFilter}
               className="student-filter"
@@ -120,7 +120,7 @@ export default function StudentsPage() {
               <option value="all">All</option>
               <option value="Active">Active</option>
               <option value="On-Hold">On-Hold</option>
-              <option value="Finished">Completed</option>
+              <option value="Completed">Completed</option>
               <option value="Stopped">Stopped</option>
             </select>
           </p>
@@ -155,19 +155,22 @@ export default function StudentsPage() {
         <table>
           <thead>
             <tr>
-              <th style={{ width: "4%" }}></th>
-              <th style={{ width: "14%" }}>Status</th>
+              <th style={{ width: "38px" }}></th>
+              {/* <th style={{ width: "14%" }}>Status</th> */}
+              <th style={{ width: "15%" }}>Status</th>
 
+              <th></th>
               <th>Name</th>
 
               <th style={{ width: "13%" }}>Gender</th>
               <th style={{ width: "15%" }}>Date of Birth</th>
-              <th style={{ width: "12%" }}>Group</th>
+              <th style={{ width: "12%" }}>Class</th>
               <th style={{ width: "15%" }}>Ref nr</th>
               <th style={{ width: "6%" }}>BSN</th>
-              <th style={{ width: "4%" }}></th>
+              <th style={{ width: "38px" }}></th>
             </tr>
           </thead>
+
           <tbody>
             {!students
               ? "Loading.."
@@ -176,7 +179,6 @@ export default function StudentsPage() {
                     key={student.id}
                     id={student.id}
                     firstName={student.firstName}
-                    affix={student.affix}
                     lastName={student.lastName}
                     gender={student.gender}
                     dateOfBirth={student.dateOfBirth}
@@ -184,6 +186,7 @@ export default function StudentsPage() {
                     refNr={student.ref}
                     bsn={student.bsn}
                     status={student.status}
+                    imageUrl={student.imageUrl}
                   />
                 ))}
           </tbody>

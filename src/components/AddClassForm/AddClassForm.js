@@ -41,6 +41,13 @@ export default function AddClassForm({ open, close }) {
     dispatch(
       createGroup(name, level, hours, startDate, teacherId, coTeacherId)
     );
+    setName("");
+    setLevel("");
+    setHours("");
+    setStartDate("");
+    setTeacherId("");
+    setCoTeacherId("");
+    close();
   };
 
   if (!open) return null;

@@ -72,7 +72,14 @@ export default function StudentTableRow(props) {
       <td></td>
       <td>{statusColor()}</td>
       <td>
-        {props.firstName} {props.affix} {props.lastName}
+        <img
+          src={props.imageUrl}
+          alt={`${props.firstName} ${props.lastName}`}
+          className="students-page-avatars"
+        />
+      </td>
+      <td>
+        {props.firstName} {props.lastName}
       </td>
       <td>{props.gender}</td>
       <td>{props.dateOfBirth}</td>
