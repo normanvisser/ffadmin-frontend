@@ -19,7 +19,7 @@ The backend is built using NodeJS, PostgreSQL and Sequelize
 - In the overview page, the "Add Student" button reveals a form, through which a new student can be added
 
 
-![Alt text](https://github.com/normanvisser/ffadmin-frontend/blob/main/src/images/1.%20Student%20Overview.png?raw=true "Student Overview Page")
+![Alt text](https://github.com/normanvisser/ffadmin-frontend/blob/main/src/images/1.%20Student%20Overview.png?raw=true "Student Overview Page" | width=100)
 
 
 ## Class Overview and Details, Adding a Class
