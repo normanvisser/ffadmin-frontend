@@ -19,7 +19,7 @@ export default function AddStudentForm({ groupNames, open, close }) {
   const [webCode, setWebCode] = useState("");
   const [extension, setExtension] = useState(false);
   const [status, setStatus] = useState("Active");
-  const [groupId, setGroupId] = useState("");
+  const [groupId, setGroupId] = useState(1);
   const [imageUrl, setImageUrl] = useState("");
 
   const submitForm = (e) => {

@@ -41,15 +41,14 @@ export default function ClassDetailsPage() {
               <div className="df jcsb">
                 <div className="fw600">
                   <p>Level: </p>
-                  <p>Method: </p>
                   <p>Hours: </p>
                   <p>Start Date: </p>
                   <p>Teacher: </p>
                   <p>Co-Teacher: </p>
+                  <p>Method: </p>
                 </div>
                 <div>
                   <p>{classDetails.level}</p>
-                  <p>{classDetails.teachingMethods.map((e) => e.name)}</p>
                   <p>{classDetails.hours}</p>
                   <p>{classDetails.startDate}</p>
                   <p>
@@ -59,6 +58,7 @@ export default function ClassDetailsPage() {
                   <p>
                     {classDetails.users[1].firstName}{" "}
                     {classDetails.users[1].lastName}
+                    <p>{classDetails.teachingMethods.map((e) => e.name)}</p>
                   </p>
                 </div>
               </div>

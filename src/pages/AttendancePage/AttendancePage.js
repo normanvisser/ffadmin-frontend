@@ -6,7 +6,7 @@ import { selectAttendances } from "../../store/student/selectors";
 import { fetchAttendances } from "../../store/student/thunks";
 import ArrowBackIosRoundedIcon from "@mui/icons-material/ArrowBackIosRounded";
 import "./styles.css";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function AttendancePage() {
   const navigate = useNavigate();
@@ -73,6 +73,7 @@ export default function AttendancePage() {
                   totalHours={a.totalHours}
                   attendance={a.attended}
                   absenceReason={a.absenceReason}
+                  studentId={a.studentId}
                 />
               ))}
         </tbody>

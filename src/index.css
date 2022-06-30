@@ -149,3 +149,7 @@ label {
 .width30 {
   width: 30%;
 }
+
+button {
+  border-style: solid;
+}

@@ -2,6 +2,7 @@ import axios from "axios";
 
 import { api_url } from "../../config/constants";
 import {
+  addGroup,
   addStudent,
   getAttendances,
   getGroupDetails,
@@ -137,6 +138,7 @@ export const createGroup =
         coTeacherId,
       });
       console.log(response.data);
+      dispatch(addGroup(response.data));
     } catch (e) {
       console.log(e.message);
     }
