@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Fairfield Admin
+This is a CMS for the language school I used to work for, called Fairfield College. It is a combination of bookkeeping and administration. The users are staff members of the school. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+With this app the users can keep track of the students and classes:
+- New students and classes can be added
+- Current student and class details can be viewed and edited
+- Student details contain personal details and school specific information, like attendance and invoices
+- Class details contain its teachers and students, schedule and more specifics about the class
 
-## Available Scripts
+The app was created as a portfolio project for Codaisseurs web development bootcamp. Some features aren't finished or weren't implemented at all, due to time limits. I work on it regularly as a practice for CMS creation. 
 
-In the project directory, you can run:
+The frontend is built using JS, React and Redux.
+The backend is built using NodeJS, PostgreSQL and Sequelize
 
-### `npm start`
+## Student Overview and Details, Adding a Student
+- The student overview page shows the most important details of all students
+- Students/classes can be filtered and sorted
+- When clicked on a student, their details show up: Personal details, attendance and school specific details
+- In the overview page, the "Add Student" button reveals a form, through which a new student can be added
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+(Vid)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Class Overview and Details, Adding a Class
+- The class overview page shows the most important details of all classes
+- Classes can be filtered and sorted
+- When clicked on a class, the details show up: Teachers, schedule, current students and some other details
+- In the overview page, the "Add Class" button reveals a form, through which a new class can be added
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+(Vid)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
