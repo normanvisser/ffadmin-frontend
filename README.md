@@ -22,6 +22,8 @@ The backend is built using NodeJS, PostgreSQL and Sequelize
 ![Alt text](https://github.com/normanvisser/ffadmin-frontend/blob/main/src/images/1.%20Student%20Overview.png?raw=true | width=100px "Student Overview Page")
 
 
+<img src="https://github.com/normanvisser/ffadmin-frontend/blob/main/src/images/1.%20Student%20Overview.png" width="48">
+
 ## Class Overview and Details, Adding a Class
 - The class overview page shows the most important details of all classes
 - Classes can be filtered and sorted
