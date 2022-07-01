@@ -34,3 +34,12 @@ The backend is built using NodeJS, PostgreSQL and Sequelize
 - When clicked on a class, the details show up: Teachers, schedule, current students and some other details
 <img src="https://github.com/normanvisser/ffadmin-frontend/blob/main/src/images/5.%20Class%20Details.png" width="800" alt="Add-Student-Form">
 
+## Upcoming
+I will continue working on the app. Some functionalities need polishing, others aren't implemented at all yet. This is a gross outline of what's coming:
+- Stronger validations on the forms
+- Enhance workflow to add student attendance
+- Add invoice tracking
+- Add media queries
+- Structurize css
+- Add form create new user (admin only)
+- Separate access to content per user
