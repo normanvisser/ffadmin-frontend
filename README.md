@@ -15,7 +15,6 @@ The backend is built using NodeJS, PostgreSQL and Sequelize
 ## Student Overview and Details, Adding a Student
 - The student overview page shows the most important details of all students
 - Students/classes can be filtered and sorted
-- When clicked on a student, their details show up: Personal details, attendance and school specific details
 
 <img src="https://github.com/normanvisser/ffadmin-frontend/blob/main/src/images/1.%20Student%20Overview.png" width="800" alt="Student-Overview">
 
@@ -28,9 +27,10 @@ The backend is built using NodeJS, PostgreSQL and Sequelize
 
 ## Class Overview and Details, Adding a Class
 - The class overview page shows the most important details of all classes
-- Classes can be filtered and sorted
-- When clicked on a class, the details show up: Teachers, schedule, current students and some other details
 - In the overview page, the "Add Class" button reveals a form, through which a new class can be added
+- Classes can be filtered and sorted
+<img src="https://github.com/normanvisser/ffadmin-frontend/blob/main/src/images/4.%20Class%20Overview.png" width="800" alt="Add-Student-Form">
 
-(Vid)
+- When clicked on a class, the details show up: Teachers, schedule, current students and some other details
+<img src="https://github.com/normanvisser/ffadmin-frontend/blob/main/src/images/5.%20Class%20Details.png" width="800" alt="Add-Student-Form">
 
