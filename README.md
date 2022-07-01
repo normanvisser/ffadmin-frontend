@@ -10,7 +10,7 @@ With this app the users can keep track of the students and classes:
 The app was created as a portfolio project for Codaisseurs web development bootcamp. Some features aren't finished or weren't implemented at all, due to time limits. I work on it regularly as a practice for CMS creation. 
 
 The frontend is built using JS, React and Redux.
-The backend is built using NodeJS, PostgreSQL and Sequelize
+The [backend](https://github.com/normanvisser/ffadmin-backend) is built using NodeJS, PostgreSQL and Sequelize
 
 ## Student Overview and Details, Adding a Student
 - The student overview page shows the most important details of all students
